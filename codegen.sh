@@ -79,7 +79,7 @@ main() {
         string_name=$(awk '{print $1}' <<<"$terminfo_cap_tuple")
         define_name=$(awk '{print $2}' <<<"$terminfo_cap_tuple")
         string_index=$(terminfo_string_index $string_name)
-        c_cap_indexes+="    $string_index, // $string_name (TB_CAP_${define_name})"$'\n'
+        c_cap_indexes+="    $string_index, /* $string_name (TB_CAP_${define_name}) */"$'\n'
         c_cap_defines+="#define TB_CAP_${define_name} $c_cap_num"$'\n'
         c_key_defines+="#define TB_KEY_${define_name} (0xffff - $c_key_num)"$'\n'
         let c_cap_num+=1
@@ -95,7 +95,7 @@ main() {
         string_name=$(awk '{print $1}' <<<"$terminfo_cap_tuple")
         define_name=$(awk '{print $2}' <<<"$terminfo_cap_tuple")
         string_index=$(terminfo_string_index $string_name)
-        c_cap_indexes+="    $string_index, // $string_name (TB_CAP_${define_name})"$'\n'
+        c_cap_indexes+="    $string_index, /* $string_name (TB_CAP_${define_name}) */"$'\n'
         c_cap_defines+="#define TB_CAP_${define_name} $c_cap_num"$'\n'
         let c_cap_num+=1
     done
@@ -126,11 +126,11 @@ main() {
                 string_name=$(awk '{print $1}' <<<"$terminfo_cap_tuple")
                 define_name=$(awk '{print $2}' <<<"$terminfo_cap_tuple")
                 c_string_literal=$(terminfo_string_literal $term_name $string_name)
-                c_term_caps+="    ${c_string_literal}, // $string_name (TB_CAP_${define_name})"$'\n'
+                c_term_caps+="    ${c_string_literal}, /* $string_name (TB_CAP_${define_name}) */"$'\n'
             done
             c_term_caps+='};'
 
-            echo "// $term_name"
+            echo "/* $term_name */"
             echo "$c_term_caps"
             echo
 

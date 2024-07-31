@@ -23,6 +23,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/*
+ * silence some GCC/Clang warnings. i got these by compiling with
+ * every warning flag i could think of.
+ *
+ * these shouldn't cause issues with other compilers; a compiler
+ * doesn't recognize these will ignore them.
+ */
+#pragma GCC diagnostic push
+
+#pragma clang diagnostic ignored "-Wunknown-warning-option"
+
+#pragma GCC diagnostic ignored "-Wpedantic"
+#pragma GCC diagnostic ignored "-Wdeclaration-after-statement"
+#pragma GCC diagnostic ignored "-Wcast-align"
+#pragma GCC diagnostic ignored "-Wcast-qual"
+#pragma GCC diagnostic ignored "-Wsign-conversion"
+#pragma GCC diagnostic ignored "-Wconversion"
+#pragma GCC diagnostic ignored "-Wvariadic-macros"
+#pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
+
 #ifndef TERMBOX_H_INCL
 #define TERMBOX_H_INCL
 
@@ -62,7 +82,7 @@ SOFTWARE.
 extern "C" {
 #endif
 
-// __ffi_start
+/* __ffi_start */
 
 #define TB_VERSION_STR "2.5.0-dev"
 
@@ -89,8 +109,8 @@ extern "C" {
  *  TB_OPT_TRUECOLOR: Deprecated. Sets TB_OPT_ATTR_W to 32 if not already set.
  */
 
-#if defined(TB_LIB_OPTS) || 0 // __tb_lib_opts
-// Ensure consistent compile-time options when using as a shared library
+#if defined(TB_LIB_OPTS) || 0 /* __tb_lib_opts */
+/* Ensure consistent compile-time options when using as a shared library */
 #undef TB_OPT_ATTR_W
 #undef TB_OPT_EGC
 #undef TB_OPT_PRINTF_BUF
@@ -99,13 +119,13 @@ extern "C" {
 #define TB_OPT_EGC
 #endif
 
-// Ensure sane TB_OPT_ATTR_W (16, 32, or 64)
+/* Ensure sane TB_OPT_ATTR_W (16, 32, or 64) */
 #if defined TB_OPT_ATTR_W && TB_OPT_ATTR_W == 16
 #elif defined TB_OPT_ATTR_W && TB_OPT_ATTR_W == 32
 #elif defined TB_OPT_ATTR_W && TB_OPT_ATTR_W == 64
 #else
 #undef TB_OPT_ATTR_W
-#if defined TB_OPT_TRUECOLOR // Deprecated. Back-compat for old flag.
+#if defined TB_OPT_TRUECOLOR /* Deprecated. Back-compat for old flag. */
 #define TB_OPT_ATTR_W 32
 #else
 #define TB_OPT_ATTR_W 16
@@ -262,8 +282,8 @@ extern "C" {
 #define TB_HI_BLACK  0x2000
 #define TB_BRIGHT    0x4000
 #define TB_DIM       0x8000
-#define TB_256_BLACK TB_HI_BLACK // TB_256_BLACK is deprecated
-#else // 32 or 64
+#define TB_256_BLACK TB_HI_BLACK /* TB_256_BLACK is deprecated */
+#else /* 32 or 64 */
 #define TB_BOLD                0x01000000
 #define TB_UNDERLINE           0x02000000
 #define TB_REVERSE             0x04000000
@@ -272,7 +292,7 @@ extern "C" {
 #define TB_HI_BLACK            0x20000000
 #define TB_BRIGHT              0x40000000
 #define TB_DIM                 0x80000000
-#define TB_TRUECOLOR_BOLD      TB_BOLD      // TB_TRUECOLOR_* is deprecated
+#define TB_TRUECOLOR_BOLD      TB_BOLD      /* TB_TRUECOLOR_* is deprecated */
 #define TB_TRUECOLOR_UNDERLINE TB_UNDERLINE
 #define TB_TRUECOLOR_REVERSE   TB_REVERSE
 #define TB_TRUECOLOR_ITALIC    TB_ITALIC
@@ -385,7 +405,7 @@ extern "C" {
 typedef uint64_t uintattr_t;
 #elif TB_OPT_ATTR_W == 32
 typedef uint32_t uintattr_t;
-#else // 16
+#else /* 16 */
 typedef uint16_t uintattr_t;
 #endif
 
@@ -683,7 +703,7 @@ int tb_utf8_unicode_to_char(char *out, uint32_t c);
 /* Library utility functions */
 int tb_last_errno(void);
 const char *tb_strerror(int err);
-struct tb_cell *tb_cell_buffer(void); // Deprecated
+struct tb_cell *tb_cell_buffer(void); /* Deprecated */
 int tb_has_truecolor(void);
 int tb_has_egc(void);
 int tb_attr_width(void);
@@ -802,296 +822,296 @@ static struct tb_global_t global = {0};
 /* Produced by ./codegen.sh on Thu, 13 Jul 2023 05:46:13 +0000 */
 
 static const int16_t terminfo_cap_indexes[] = {
-    66,  // kf1 (TB_CAP_F1)
-    68,  // kf2 (TB_CAP_F2)
-    69,  // kf3 (TB_CAP_F3)
-    70,  // kf4 (TB_CAP_F4)
-    71,  // kf5 (TB_CAP_F5)
-    72,  // kf6 (TB_CAP_F6)
-    73,  // kf7 (TB_CAP_F7)
-    74,  // kf8 (TB_CAP_F8)
-    75,  // kf9 (TB_CAP_F9)
-    67,  // kf10 (TB_CAP_F10)
-    216, // kf11 (TB_CAP_F11)
-    217, // kf12 (TB_CAP_F12)
-    77,  // kich1 (TB_CAP_INSERT)
-    59,  // kdch1 (TB_CAP_DELETE)
-    76,  // khome (TB_CAP_HOME)
-    164, // kend (TB_CAP_END)
-    82,  // kpp (TB_CAP_PGUP)
-    81,  // knp (TB_CAP_PGDN)
-    87,  // kcuu1 (TB_CAP_ARROW_UP)
-    61,  // kcud1 (TB_CAP_ARROW_DOWN)
-    79,  // kcub1 (TB_CAP_ARROW_LEFT)
-    83,  // kcuf1 (TB_CAP_ARROW_RIGHT)
-    148, // kcbt (TB_CAP_BACK_TAB)
-    28,  // smcup (TB_CAP_ENTER_CA)
-    40,  // rmcup (TB_CAP_EXIT_CA)
-    16,  // cnorm (TB_CAP_SHOW_CURSOR)
-    13,  // civis (TB_CAP_HIDE_CURSOR)
-    5,   // clear (TB_CAP_CLEAR_SCREEN)
-    39,  // sgr0 (TB_CAP_SGR0)
-    36,  // smul (TB_CAP_UNDERLINE)
-    27,  // bold (TB_CAP_BOLD)
-    26,  // blink (TB_CAP_BLINK)
-    311, // sitm (TB_CAP_ITALIC)
-    34,  // rev (TB_CAP_REVERSE)
-    89,  // smkx (TB_CAP_ENTER_KEYPAD)
-    88,  // rmkx (TB_CAP_EXIT_KEYPAD)
-    30,  // dim (TB_CAP_DIM)
-    32,  // invis (TB_CAP_INVISIBLE)
+    66,  /* kf1 (TB_CAP_F1) */
+    68,  /* kf2 (TB_CAP_F2) */
+    69,  /* kf3 (TB_CAP_F3) */
+    70,  /* kf4 (TB_CAP_F4) */
+    71,  /* kf5 (TB_CAP_F5) */
+    72,  /* kf6 (TB_CAP_F6) */
+    73,  /* kf7 (TB_CAP_F7) */
+    74,  /* kf8 (TB_CAP_F8) */
+    75,  /* kf9 (TB_CAP_F9) */
+    67,  /* kf10 (TB_CAP_F10) */
+    216, /* kf11 (TB_CAP_F11) */
+    217, /* kf12 (TB_CAP_F12) */
+    77,  /* kich1 (TB_CAP_INSERT) */
+    59,  /* kdch1 (TB_CAP_DELETE) */
+    76,  /* khome (TB_CAP_HOME) */
+    164, /* kend (TB_CAP_END) */
+    82,  /* kpp (TB_CAP_PGUP) */
+    81,  /* knp (TB_CAP_PGDN) */
+    87,  /* kcuu1 (TB_CAP_ARROW_UP) */
+    61,  /* kcud1 (TB_CAP_ARROW_DOWN) */
+    79,  /* kcub1 (TB_CAP_ARROW_LEFT) */
+    83,  /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    148, /* kcbt (TB_CAP_BACK_TAB) */
+    28,  /* smcup (TB_CAP_ENTER_CA) */
+    40,  /* rmcup (TB_CAP_EXIT_CA) */
+    16,  /* cnorm (TB_CAP_SHOW_CURSOR) */
+    13,  /* civis (TB_CAP_HIDE_CURSOR) */
+    5,   /* clear (TB_CAP_CLEAR_SCREEN) */
+    39,  /* sgr0 (TB_CAP_SGR0) */
+    36,  /* smul (TB_CAP_UNDERLINE) */
+    27,  /* bold (TB_CAP_BOLD) */
+    26,  /* blink (TB_CAP_BLINK) */
+    311, /* sitm (TB_CAP_ITALIC) */
+    34,  /* rev (TB_CAP_REVERSE) */
+    89,  /* smkx (TB_CAP_ENTER_KEYPAD) */
+    88,  /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    30,  /* dim (TB_CAP_DIM) */
+    32,  /* invis (TB_CAP_INVISIBLE) */
 };
 
-// xterm
+/* xterm */
 static const char *xterm_caps[] = {
-    "\033OP",                  // kf1 (TB_CAP_F1)
-    "\033OQ",                  // kf2 (TB_CAP_F2)
-    "\033OR",                  // kf3 (TB_CAP_F3)
-    "\033OS",                  // kf4 (TB_CAP_F4)
-    "\033[15~",                // kf5 (TB_CAP_F5)
-    "\033[17~",                // kf6 (TB_CAP_F6)
-    "\033[18~",                // kf7 (TB_CAP_F7)
-    "\033[19~",                // kf8 (TB_CAP_F8)
-    "\033[20~",                // kf9 (TB_CAP_F9)
-    "\033[21~",                // kf10 (TB_CAP_F10)
-    "\033[23~",                // kf11 (TB_CAP_F11)
-    "\033[24~",                // kf12 (TB_CAP_F12)
-    "\033[2~",                 // kich1 (TB_CAP_INSERT)
-    "\033[3~",                 // kdch1 (TB_CAP_DELETE)
-    "\033OH",                  // khome (TB_CAP_HOME)
-    "\033OF",                  // kend (TB_CAP_END)
-    "\033[5~",                 // kpp (TB_CAP_PGUP)
-    "\033[6~",                 // knp (TB_CAP_PGDN)
-    "\033OA",                  // kcuu1 (TB_CAP_ARROW_UP)
-    "\033OB",                  // kcud1 (TB_CAP_ARROW_DOWN)
-    "\033OD",                  // kcub1 (TB_CAP_ARROW_LEFT)
-    "\033OC",                  // kcuf1 (TB_CAP_ARROW_RIGHT)
-    "\033[Z",                  // kcbt (TB_CAP_BACK_TAB)
-    "\033[?1049h\033[22;0;0t", // smcup (TB_CAP_ENTER_CA)
-    "\033[?1049l\033[23;0;0t", // rmcup (TB_CAP_EXIT_CA)
-    "\033[?12l\033[?25h",      // cnorm (TB_CAP_SHOW_CURSOR)
-    "\033[?25l",               // civis (TB_CAP_HIDE_CURSOR)
-    "\033[H\033[2J",           // clear (TB_CAP_CLEAR_SCREEN)
-    "\033(B\033[m",            // sgr0 (TB_CAP_SGR0)
-    "\033[4m",                 // smul (TB_CAP_UNDERLINE)
-    "\033[1m",                 // bold (TB_CAP_BOLD)
-    "\033[5m",                 // blink (TB_CAP_BLINK)
-    "\033[3m",                 // sitm (TB_CAP_ITALIC)
-    "\033[7m",                 // rev (TB_CAP_REVERSE)
-    "\033[?1h\033=",           // smkx (TB_CAP_ENTER_KEYPAD)
-    "\033[?1l\033>",           // rmkx (TB_CAP_EXIT_KEYPAD)
-    "\033[2m",                 // dim (TB_CAP_DIM)
-    "\033[8m",                 // invis (TB_CAP_INVISIBLE)
+    "\033OP",                  /* kf1 (TB_CAP_F1) */
+    "\033OQ",                  /* kf2 (TB_CAP_F2) */
+    "\033OR",                  /* kf3 (TB_CAP_F3) */
+    "\033OS",                  /* kf4 (TB_CAP_F4) */
+    "\033[15~",                /* kf5 (TB_CAP_F5) */
+    "\033[17~",                /* kf6 (TB_CAP_F6) */
+    "\033[18~",                /* kf7 (TB_CAP_F7) */
+    "\033[19~",                /* kf8 (TB_CAP_F8) */
+    "\033[20~",                /* kf9 (TB_CAP_F9) */
+    "\033[21~",                /* kf10 (TB_CAP_F10) */
+    "\033[23~",                /* kf11 (TB_CAP_F11) */
+    "\033[24~",                /* kf12 (TB_CAP_F12) */
+    "\033[2~",                 /* kich1 (TB_CAP_INSERT) */
+    "\033[3~",                 /* kdch1 (TB_CAP_DELETE) */
+    "\033OH",                  /* khome (TB_CAP_HOME) */
+    "\033OF",                  /* kend (TB_CAP_END) */
+    "\033[5~",                 /* kpp (TB_CAP_PGUP) */
+    "\033[6~",                 /* knp (TB_CAP_PGDN) */
+    "\033OA",                  /* kcuu1 (TB_CAP_ARROW_UP) */
+    "\033OB",                  /* kcud1 (TB_CAP_ARROW_DOWN) */
+    "\033OD",                  /* kcub1 (TB_CAP_ARROW_LEFT) */
+    "\033OC",                  /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    "\033[Z",                  /* kcbt (TB_CAP_BACK_TAB) */
+    "\033[?1049h\033[22;0;0t", /* smcup (TB_CAP_ENTER_CA) */
+    "\033[?1049l\033[23;0;0t", /* rmcup (TB_CAP_EXIT_CA) */
+    "\033[?12l\033[?25h",      /* cnorm (TB_CAP_SHOW_CURSOR) */
+    "\033[?25l",               /* civis (TB_CAP_HIDE_CURSOR) */
+    "\033[H\033[2J",           /* clear (TB_CAP_CLEAR_SCREEN) */
+    "\033(B\033[m",            /* sgr0 (TB_CAP_SGR0) */
+    "\033[4m",                 /* smul (TB_CAP_UNDERLINE) */
+    "\033[1m",                 /* bold (TB_CAP_BOLD) */
+    "\033[5m",                 /* blink (TB_CAP_BLINK) */
+    "\033[3m",                 /* sitm (TB_CAP_ITALIC) */
+    "\033[7m",                 /* rev (TB_CAP_REVERSE) */
+    "\033[?1h\033=",           /* smkx (TB_CAP_ENTER_KEYPAD) */
+    "\033[?1l\033>",           /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    "\033[2m",                 /* dim (TB_CAP_DIM) */
+    "\033[8m",                 /* invis (TB_CAP_INVISIBLE) */
 };
 
-// linux
+/* linux */
 static const char *linux_caps[] = {
-    "\033[[A",           // kf1 (TB_CAP_F1)
-    "\033[[B",           // kf2 (TB_CAP_F2)
-    "\033[[C",           // kf3 (TB_CAP_F3)
-    "\033[[D",           // kf4 (TB_CAP_F4)
-    "\033[[E",           // kf5 (TB_CAP_F5)
-    "\033[17~",          // kf6 (TB_CAP_F6)
-    "\033[18~",          // kf7 (TB_CAP_F7)
-    "\033[19~",          // kf8 (TB_CAP_F8)
-    "\033[20~",          // kf9 (TB_CAP_F9)
-    "\033[21~",          // kf10 (TB_CAP_F10)
-    "\033[23~",          // kf11 (TB_CAP_F11)
-    "\033[24~",          // kf12 (TB_CAP_F12)
-    "\033[2~",           // kich1 (TB_CAP_INSERT)
-    "\033[3~",           // kdch1 (TB_CAP_DELETE)
-    "\033[1~",           // khome (TB_CAP_HOME)
-    "\033[4~",           // kend (TB_CAP_END)
-    "\033[5~",           // kpp (TB_CAP_PGUP)
-    "\033[6~",           // knp (TB_CAP_PGDN)
-    "\033[A",            // kcuu1 (TB_CAP_ARROW_UP)
-    "\033[B",            // kcud1 (TB_CAP_ARROW_DOWN)
-    "\033[D",            // kcub1 (TB_CAP_ARROW_LEFT)
-    "\033[C",            // kcuf1 (TB_CAP_ARROW_RIGHT)
-    "\033\011",          // kcbt (TB_CAP_BACK_TAB)
-    "",                  // smcup (TB_CAP_ENTER_CA)
-    "",                  // rmcup (TB_CAP_EXIT_CA)
-    "\033[?25h\033[?0c", // cnorm (TB_CAP_SHOW_CURSOR)
-    "\033[?25l\033[?1c", // civis (TB_CAP_HIDE_CURSOR)
-    "\033[H\033[J",      // clear (TB_CAP_CLEAR_SCREEN)
-    "\033[m\017",        // sgr0 (TB_CAP_SGR0)
-    "\033[4m",           // smul (TB_CAP_UNDERLINE)
-    "\033[1m",           // bold (TB_CAP_BOLD)
-    "\033[5m",           // blink (TB_CAP_BLINK)
-    "",                  // sitm (TB_CAP_ITALIC)
-    "\033[7m",           // rev (TB_CAP_REVERSE)
-    "",                  // smkx (TB_CAP_ENTER_KEYPAD)
-    "",                  // rmkx (TB_CAP_EXIT_KEYPAD)
-    "\033[2m",           // dim (TB_CAP_DIM)
-    "",                  // invis (TB_CAP_INVISIBLE)
+    "\033[[A",           /* kf1 (TB_CAP_F1) */
+    "\033[[B",           /* kf2 (TB_CAP_F2) */
+    "\033[[C",           /* kf3 (TB_CAP_F3) */
+    "\033[[D",           /* kf4 (TB_CAP_F4) */
+    "\033[[E",           /* kf5 (TB_CAP_F5) */
+    "\033[17~",          /* kf6 (TB_CAP_F6) */
+    "\033[18~",          /* kf7 (TB_CAP_F7) */
+    "\033[19~",          /* kf8 (TB_CAP_F8) */
+    "\033[20~",          /* kf9 (TB_CAP_F9) */
+    "\033[21~",          /* kf10 (TB_CAP_F10) */
+    "\033[23~",          /* kf11 (TB_CAP_F11) */
+    "\033[24~",          /* kf12 (TB_CAP_F12) */
+    "\033[2~",           /* kich1 (TB_CAP_INSERT) */
+    "\033[3~",           /* kdch1 (TB_CAP_DELETE) */
+    "\033[1~",           /* khome (TB_CAP_HOME) */
+    "\033[4~",           /* kend (TB_CAP_END) */
+    "\033[5~",           /* kpp (TB_CAP_PGUP) */
+    "\033[6~",           /* knp (TB_CAP_PGDN) */
+    "\033[A",            /* kcuu1 (TB_CAP_ARROW_UP) */
+    "\033[B",            /* kcud1 (TB_CAP_ARROW_DOWN) */
+    "\033[D",            /* kcub1 (TB_CAP_ARROW_LEFT) */
+    "\033[C",            /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    "\033\011",          /* kcbt (TB_CAP_BACK_TAB) */
+    "",                  /* smcup (TB_CAP_ENTER_CA) */
+    "",                  /* rmcup (TB_CAP_EXIT_CA) */
+    "\033[?25h\033[?0c", /* cnorm (TB_CAP_SHOW_CURSOR) */
+    "\033[?25l\033[?1c", /* civis (TB_CAP_HIDE_CURSOR) */
+    "\033[H\033[J",      /* clear (TB_CAP_CLEAR_SCREEN) */
+    "\033[m\017",        /* sgr0 (TB_CAP_SGR0) */
+    "\033[4m",           /* smul (TB_CAP_UNDERLINE) */
+    "\033[1m",           /* bold (TB_CAP_BOLD) */
+    "\033[5m",           /* blink (TB_CAP_BLINK) */
+    "",                  /* sitm (TB_CAP_ITALIC) */
+    "\033[7m",           /* rev (TB_CAP_REVERSE) */
+    "",                  /* smkx (TB_CAP_ENTER_KEYPAD) */
+    "",                  /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    "\033[2m",           /* dim (TB_CAP_DIM) */
+    "",                  /* invis (TB_CAP_INVISIBLE) */
 };
 
-// screen
+/* screen */
 static const char *screen_caps[] = {
-    "\033OP",            // kf1 (TB_CAP_F1)
-    "\033OQ",            // kf2 (TB_CAP_F2)
-    "\033OR",            // kf3 (TB_CAP_F3)
-    "\033OS",            // kf4 (TB_CAP_F4)
-    "\033[15~",          // kf5 (TB_CAP_F5)
-    "\033[17~",          // kf6 (TB_CAP_F6)
-    "\033[18~",          // kf7 (TB_CAP_F7)
-    "\033[19~",          // kf8 (TB_CAP_F8)
-    "\033[20~",          // kf9 (TB_CAP_F9)
-    "\033[21~",          // kf10 (TB_CAP_F10)
-    "\033[23~",          // kf11 (TB_CAP_F11)
-    "\033[24~",          // kf12 (TB_CAP_F12)
-    "\033[2~",           // kich1 (TB_CAP_INSERT)
-    "\033[3~",           // kdch1 (TB_CAP_DELETE)
-    "\033[1~",           // khome (TB_CAP_HOME)
-    "\033[4~",           // kend (TB_CAP_END)
-    "\033[5~",           // kpp (TB_CAP_PGUP)
-    "\033[6~",           // knp (TB_CAP_PGDN)
-    "\033OA",            // kcuu1 (TB_CAP_ARROW_UP)
-    "\033OB",            // kcud1 (TB_CAP_ARROW_DOWN)
-    "\033OD",            // kcub1 (TB_CAP_ARROW_LEFT)
-    "\033OC",            // kcuf1 (TB_CAP_ARROW_RIGHT)
-    "\033[Z",            // kcbt (TB_CAP_BACK_TAB)
-    "\033[?1049h",       // smcup (TB_CAP_ENTER_CA)
-    "\033[?1049l",       // rmcup (TB_CAP_EXIT_CA)
-    "\033[34h\033[?25h", // cnorm (TB_CAP_SHOW_CURSOR)
-    "\033[?25l",         // civis (TB_CAP_HIDE_CURSOR)
-    "\033[H\033[J",      // clear (TB_CAP_CLEAR_SCREEN)
-    "\033[m\017",        // sgr0 (TB_CAP_SGR0)
-    "\033[4m",           // smul (TB_CAP_UNDERLINE)
-    "\033[1m",           // bold (TB_CAP_BOLD)
-    "\033[5m",           // blink (TB_CAP_BLINK)
-    "",                  // sitm (TB_CAP_ITALIC)
-    "\033[7m",           // rev (TB_CAP_REVERSE)
-    "\033[?1h\033=",     // smkx (TB_CAP_ENTER_KEYPAD)
-    "\033[?1l\033>",     // rmkx (TB_CAP_EXIT_KEYPAD)
-    "\033[2m",           // dim (TB_CAP_DIM)
-    "",                  // invis (TB_CAP_INVISIBLE)
+    "\033OP",            /* kf1 (TB_CAP_F1) */
+    "\033OQ",            /* kf2 (TB_CAP_F2) */
+    "\033OR",            /* kf3 (TB_CAP_F3) */
+    "\033OS",            /* kf4 (TB_CAP_F4) */
+    "\033[15~",          /* kf5 (TB_CAP_F5) */
+    "\033[17~",          /* kf6 (TB_CAP_F6) */
+    "\033[18~",          /* kf7 (TB_CAP_F7) */
+    "\033[19~",          /* kf8 (TB_CAP_F8) */
+    "\033[20~",          /* kf9 (TB_CAP_F9) */
+    "\033[21~",          /* kf10 (TB_CAP_F10) */
+    "\033[23~",          /* kf11 (TB_CAP_F11) */
+    "\033[24~",          /* kf12 (TB_CAP_F12) */
+    "\033[2~",           /* kich1 (TB_CAP_INSERT) */
+    "\033[3~",           /* kdch1 (TB_CAP_DELETE) */
+    "\033[1~",           /* khome (TB_CAP_HOME) */
+    "\033[4~",           /* kend (TB_CAP_END) */
+    "\033[5~",           /* kpp (TB_CAP_PGUP) */
+    "\033[6~",           /* knp (TB_CAP_PGDN) */
+    "\033OA",            /* kcuu1 (TB_CAP_ARROW_UP) */
+    "\033OB",            /* kcud1 (TB_CAP_ARROW_DOWN) */
+    "\033OD",            /* kcub1 (TB_CAP_ARROW_LEFT) */
+    "\033OC",            /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    "\033[Z",            /* kcbt (TB_CAP_BACK_TAB) */
+    "\033[?1049h",       /* smcup (TB_CAP_ENTER_CA) */
+    "\033[?1049l",       /* rmcup (TB_CAP_EXIT_CA) */
+    "\033[34h\033[?25h", /* cnorm (TB_CAP_SHOW_CURSOR) */
+    "\033[?25l",         /* civis (TB_CAP_HIDE_CURSOR) */
+    "\033[H\033[J",      /* clear (TB_CAP_CLEAR_SCREEN) */
+    "\033[m\017",        /* sgr0 (TB_CAP_SGR0) */
+    "\033[4m",           /* smul (TB_CAP_UNDERLINE) */
+    "\033[1m",           /* bold (TB_CAP_BOLD) */
+    "\033[5m",           /* blink (TB_CAP_BLINK) */
+    "",                  /* sitm (TB_CAP_ITALIC) */
+    "\033[7m",           /* rev (TB_CAP_REVERSE) */
+    "\033[?1h\033=",     /* smkx (TB_CAP_ENTER_KEYPAD) */
+    "\033[?1l\033>",     /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    "\033[2m",           /* dim (TB_CAP_DIM) */
+    "",                  /* invis (TB_CAP_INVISIBLE) */
 };
 
-// rxvt-256color
+/* rxvt-256color */
 static const char *rxvt_256color_caps[] = {
-    "\033[11~",              // kf1 (TB_CAP_F1)
-    "\033[12~",              // kf2 (TB_CAP_F2)
-    "\033[13~",              // kf3 (TB_CAP_F3)
-    "\033[14~",              // kf4 (TB_CAP_F4)
-    "\033[15~",              // kf5 (TB_CAP_F5)
-    "\033[17~",              // kf6 (TB_CAP_F6)
-    "\033[18~",              // kf7 (TB_CAP_F7)
-    "\033[19~",              // kf8 (TB_CAP_F8)
-    "\033[20~",              // kf9 (TB_CAP_F9)
-    "\033[21~",              // kf10 (TB_CAP_F10)
-    "\033[23~",              // kf11 (TB_CAP_F11)
-    "\033[24~",              // kf12 (TB_CAP_F12)
-    "\033[2~",               // kich1 (TB_CAP_INSERT)
-    "\033[3~",               // kdch1 (TB_CAP_DELETE)
-    "\033[7~",               // khome (TB_CAP_HOME)
-    "\033[8~",               // kend (TB_CAP_END)
-    "\033[5~",               // kpp (TB_CAP_PGUP)
-    "\033[6~",               // knp (TB_CAP_PGDN)
-    "\033[A",                // kcuu1 (TB_CAP_ARROW_UP)
-    "\033[B",                // kcud1 (TB_CAP_ARROW_DOWN)
-    "\033[D",                // kcub1 (TB_CAP_ARROW_LEFT)
-    "\033[C",                // kcuf1 (TB_CAP_ARROW_RIGHT)
-    "\033[Z",                // kcbt (TB_CAP_BACK_TAB)
-    "\0337\033[?47h",        // smcup (TB_CAP_ENTER_CA)
-    "\033[2J\033[?47l\0338", // rmcup (TB_CAP_EXIT_CA)
-    "\033[?25h",             // cnorm (TB_CAP_SHOW_CURSOR)
-    "\033[?25l",             // civis (TB_CAP_HIDE_CURSOR)
-    "\033[H\033[2J",         // clear (TB_CAP_CLEAR_SCREEN)
-    "\033[m\017",            // sgr0 (TB_CAP_SGR0)
-    "\033[4m",               // smul (TB_CAP_UNDERLINE)
-    "\033[1m",               // bold (TB_CAP_BOLD)
-    "\033[5m",               // blink (TB_CAP_BLINK)
-    "",                      // sitm (TB_CAP_ITALIC)
-    "\033[7m",               // rev (TB_CAP_REVERSE)
-    "\033=",                 // smkx (TB_CAP_ENTER_KEYPAD)
-    "\033>",                 // rmkx (TB_CAP_EXIT_KEYPAD)
-    "",                      // dim (TB_CAP_DIM)
-    "",                      // invis (TB_CAP_INVISIBLE)
+    "\033[11~",              /* kf1 (TB_CAP_F1) */
+    "\033[12~",              /* kf2 (TB_CAP_F2) */
+    "\033[13~",              /* kf3 (TB_CAP_F3) */
+    "\033[14~",              /* kf4 (TB_CAP_F4) */
+    "\033[15~",              /* kf5 (TB_CAP_F5) */
+    "\033[17~",              /* kf6 (TB_CAP_F6) */
+    "\033[18~",              /* kf7 (TB_CAP_F7) */
+    "\033[19~",              /* kf8 (TB_CAP_F8) */
+    "\033[20~",              /* kf9 (TB_CAP_F9) */
+    "\033[21~",              /* kf10 (TB_CAP_F10) */
+    "\033[23~",              /* kf11 (TB_CAP_F11) */
+    "\033[24~",              /* kf12 (TB_CAP_F12) */
+    "\033[2~",               /* kich1 (TB_CAP_INSERT) */
+    "\033[3~",               /* kdch1 (TB_CAP_DELETE) */
+    "\033[7~",               /* khome (TB_CAP_HOME) */
+    "\033[8~",               /* kend (TB_CAP_END) */
+    "\033[5~",               /* kpp (TB_CAP_PGUP) */
+    "\033[6~",               /* knp (TB_CAP_PGDN) */
+    "\033[A",                /* kcuu1 (TB_CAP_ARROW_UP) */
+    "\033[B",                /* kcud1 (TB_CAP_ARROW_DOWN) */
+    "\033[D",                /* kcub1 (TB_CAP_ARROW_LEFT) */
+    "\033[C",                /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    "\033[Z",                /* kcbt (TB_CAP_BACK_TAB) */
+    "\0337\033[?47h",        /* smcup (TB_CAP_ENTER_CA) */
+    "\033[2J\033[?47l\0338", /* rmcup (TB_CAP_EXIT_CA) */
+    "\033[?25h",             /* cnorm (TB_CAP_SHOW_CURSOR) */
+    "\033[?25l",             /* civis (TB_CAP_HIDE_CURSOR) */
+    "\033[H\033[2J",         /* clear (TB_CAP_CLEAR_SCREEN) */
+    "\033[m\017",            /* sgr0 (TB_CAP_SGR0) */
+    "\033[4m",               /* smul (TB_CAP_UNDERLINE) */
+    "\033[1m",               /* bold (TB_CAP_BOLD) */
+    "\033[5m",               /* blink (TB_CAP_BLINK) */
+    "",                      /* sitm (TB_CAP_ITALIC) */
+    "\033[7m",               /* rev (TB_CAP_REVERSE) */
+    "\033=",                 /* smkx (TB_CAP_ENTER_KEYPAD) */
+    "\033>",                 /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    "",                      /* dim (TB_CAP_DIM) */
+    "",                      /* invis (TB_CAP_INVISIBLE) */
 };
 
-// rxvt-unicode
+/* rxvt-unicode */
 static const char *rxvt_unicode_caps[] = {
-    "\033[11~",           // kf1 (TB_CAP_F1)
-    "\033[12~",           // kf2 (TB_CAP_F2)
-    "\033[13~",           // kf3 (TB_CAP_F3)
-    "\033[14~",           // kf4 (TB_CAP_F4)
-    "\033[15~",           // kf5 (TB_CAP_F5)
-    "\033[17~",           // kf6 (TB_CAP_F6)
-    "\033[18~",           // kf7 (TB_CAP_F7)
-    "\033[19~",           // kf8 (TB_CAP_F8)
-    "\033[20~",           // kf9 (TB_CAP_F9)
-    "\033[21~",           // kf10 (TB_CAP_F10)
-    "\033[23~",           // kf11 (TB_CAP_F11)
-    "\033[24~",           // kf12 (TB_CAP_F12)
-    "\033[2~",            // kich1 (TB_CAP_INSERT)
-    "\033[3~",            // kdch1 (TB_CAP_DELETE)
-    "\033[7~",            // khome (TB_CAP_HOME)
-    "\033[8~",            // kend (TB_CAP_END)
-    "\033[5~",            // kpp (TB_CAP_PGUP)
-    "\033[6~",            // knp (TB_CAP_PGDN)
-    "\033[A",             // kcuu1 (TB_CAP_ARROW_UP)
-    "\033[B",             // kcud1 (TB_CAP_ARROW_DOWN)
-    "\033[D",             // kcub1 (TB_CAP_ARROW_LEFT)
-    "\033[C",             // kcuf1 (TB_CAP_ARROW_RIGHT)
-    "\033[Z",             // kcbt (TB_CAP_BACK_TAB)
-    "\033[?1049h",        // smcup (TB_CAP_ENTER_CA)
-    "\033[r\033[?1049l",  // rmcup (TB_CAP_EXIT_CA)
-    "\033[?12l\033[?25h", // cnorm (TB_CAP_SHOW_CURSOR)
-    "\033[?25l",          // civis (TB_CAP_HIDE_CURSOR)
-    "\033[H\033[2J",      // clear (TB_CAP_CLEAR_SCREEN)
-    "\033[m\033(B",       // sgr0 (TB_CAP_SGR0)
-    "\033[4m",            // smul (TB_CAP_UNDERLINE)
-    "\033[1m",            // bold (TB_CAP_BOLD)
-    "\033[5m",            // blink (TB_CAP_BLINK)
-    "\033[3m",            // sitm (TB_CAP_ITALIC)
-    "\033[7m",            // rev (TB_CAP_REVERSE)
-    "\033=",              // smkx (TB_CAP_ENTER_KEYPAD)
-    "\033>",              // rmkx (TB_CAP_EXIT_KEYPAD)
-    "",                   // dim (TB_CAP_DIM)
-    "",                   // invis (TB_CAP_INVISIBLE)
+    "\033[11~",           /* kf1 (TB_CAP_F1) */
+    "\033[12~",           /* kf2 (TB_CAP_F2) */
+    "\033[13~",           /* kf3 (TB_CAP_F3) */
+    "\033[14~",           /* kf4 (TB_CAP_F4) */
+    "\033[15~",           /* kf5 (TB_CAP_F5) */
+    "\033[17~",           /* kf6 (TB_CAP_F6) */
+    "\033[18~",           /* kf7 (TB_CAP_F7) */
+    "\033[19~",           /* kf8 (TB_CAP_F8) */
+    "\033[20~",           /* kf9 (TB_CAP_F9) */
+    "\033[21~",           /* kf10 (TB_CAP_F10) */
+    "\033[23~",           /* kf11 (TB_CAP_F11) */
+    "\033[24~",           /* kf12 (TB_CAP_F12) */
+    "\033[2~",            /* kich1 (TB_CAP_INSERT) */
+    "\033[3~",            /* kdch1 (TB_CAP_DELETE) */
+    "\033[7~",            /* khome (TB_CAP_HOME) */
+    "\033[8~",            /* kend (TB_CAP_END) */
+    "\033[5~",            /* kpp (TB_CAP_PGUP) */
+    "\033[6~",            /* knp (TB_CAP_PGDN) */
+    "\033[A",             /* kcuu1 (TB_CAP_ARROW_UP) */
+    "\033[B",             /* kcud1 (TB_CAP_ARROW_DOWN) */
+    "\033[D",             /* kcub1 (TB_CAP_ARROW_LEFT) */
+    "\033[C",             /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    "\033[Z",             /* kcbt (TB_CAP_BACK_TAB) */
+    "\033[?1049h",        /* smcup (TB_CAP_ENTER_CA) */
+    "\033[r\033[?1049l",  /* rmcup (TB_CAP_EXIT_CA) */
+    "\033[?12l\033[?25h", /* cnorm (TB_CAP_SHOW_CURSOR) */
+    "\033[?25l",          /* civis (TB_CAP_HIDE_CURSOR) */
+    "\033[H\033[2J",      /* clear (TB_CAP_CLEAR_SCREEN) */
+    "\033[m\033(B",       /* sgr0 (TB_CAP_SGR0) */
+    "\033[4m",            /* smul (TB_CAP_UNDERLINE) */
+    "\033[1m",            /* bold (TB_CAP_BOLD) */
+    "\033[5m",            /* blink (TB_CAP_BLINK) */
+    "\033[3m",            /* sitm (TB_CAP_ITALIC) */
+    "\033[7m",            /* rev (TB_CAP_REVERSE) */
+    "\033=",              /* smkx (TB_CAP_ENTER_KEYPAD) */
+    "\033>",              /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    "",                   /* dim (TB_CAP_DIM) */
+    "",                   /* invis (TB_CAP_INVISIBLE) */
 };
 
-// Eterm
+/* Eterm */
 static const char *eterm_caps[] = {
-    "\033[11~",              // kf1 (TB_CAP_F1)
-    "\033[12~",              // kf2 (TB_CAP_F2)
-    "\033[13~",              // kf3 (TB_CAP_F3)
-    "\033[14~",              // kf4 (TB_CAP_F4)
-    "\033[15~",              // kf5 (TB_CAP_F5)
-    "\033[17~",              // kf6 (TB_CAP_F6)
-    "\033[18~",              // kf7 (TB_CAP_F7)
-    "\033[19~",              // kf8 (TB_CAP_F8)
-    "\033[20~",              // kf9 (TB_CAP_F9)
-    "\033[21~",              // kf10 (TB_CAP_F10)
-    "\033[23~",              // kf11 (TB_CAP_F11)
-    "\033[24~",              // kf12 (TB_CAP_F12)
-    "\033[2~",               // kich1 (TB_CAP_INSERT)
-    "\033[3~",               // kdch1 (TB_CAP_DELETE)
-    "\033[7~",               // khome (TB_CAP_HOME)
-    "\033[8~",               // kend (TB_CAP_END)
-    "\033[5~",               // kpp (TB_CAP_PGUP)
-    "\033[6~",               // knp (TB_CAP_PGDN)
-    "\033[A",                // kcuu1 (TB_CAP_ARROW_UP)
-    "\033[B",                // kcud1 (TB_CAP_ARROW_DOWN)
-    "\033[D",                // kcub1 (TB_CAP_ARROW_LEFT)
-    "\033[C",                // kcuf1 (TB_CAP_ARROW_RIGHT)
-    "",                      // kcbt (TB_CAP_BACK_TAB)
-    "\0337\033[?47h",        // smcup (TB_CAP_ENTER_CA)
-    "\033[2J\033[?47l\0338", // rmcup (TB_CAP_EXIT_CA)
-    "\033[?25h",             // cnorm (TB_CAP_SHOW_CURSOR)
-    "\033[?25l",             // civis (TB_CAP_HIDE_CURSOR)
-    "\033[H\033[2J",         // clear (TB_CAP_CLEAR_SCREEN)
-    "\033[m\017",            // sgr0 (TB_CAP_SGR0)
-    "\033[4m",               // smul (TB_CAP_UNDERLINE)
-    "\033[1m",               // bold (TB_CAP_BOLD)
-    "\033[5m",               // blink (TB_CAP_BLINK)
-    "",                      // sitm (TB_CAP_ITALIC)
-    "\033[7m",               // rev (TB_CAP_REVERSE)
-    "",                      // smkx (TB_CAP_ENTER_KEYPAD)
-    "",                      // rmkx (TB_CAP_EXIT_KEYPAD)
-    "",                      // dim (TB_CAP_DIM)
-    "",                      // invis (TB_CAP_INVISIBLE)
+    "\033[11~",              /* kf1 (TB_CAP_F1) */
+    "\033[12~",              /* kf2 (TB_CAP_F2) */
+    "\033[13~",              /* kf3 (TB_CAP_F3) */
+    "\033[14~",              /* kf4 (TB_CAP_F4) */
+    "\033[15~",              /* kf5 (TB_CAP_F5) */
+    "\033[17~",              /* kf6 (TB_CAP_F6) */
+    "\033[18~",              /* kf7 (TB_CAP_F7) */
+    "\033[19~",              /* kf8 (TB_CAP_F8) */
+    "\033[20~",              /* kf9 (TB_CAP_F9) */
+    "\033[21~",              /* kf10 (TB_CAP_F10) */
+    "\033[23~",              /* kf11 (TB_CAP_F11) */
+    "\033[24~",              /* kf12 (TB_CAP_F12) */
+    "\033[2~",               /* kich1 (TB_CAP_INSERT) */
+    "\033[3~",               /* kdch1 (TB_CAP_DELETE) */
+    "\033[7~",               /* khome (TB_CAP_HOME) */
+    "\033[8~",               /* kend (TB_CAP_END) */
+    "\033[5~",               /* kpp (TB_CAP_PGUP) */
+    "\033[6~",               /* knp (TB_CAP_PGDN) */
+    "\033[A",                /* kcuu1 (TB_CAP_ARROW_UP) */
+    "\033[B",                /* kcud1 (TB_CAP_ARROW_DOWN) */
+    "\033[D",                /* kcub1 (TB_CAP_ARROW_LEFT) */
+    "\033[C",                /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    "",                      /* kcbt (TB_CAP_BACK_TAB) */
+    "\0337\033[?47h",        /* smcup (TB_CAP_ENTER_CA) */
+    "\033[2J\033[?47l\0338", /* rmcup (TB_CAP_EXIT_CA) */
+    "\033[?25h",             /* cnorm (TB_CAP_SHOW_CURSOR) */
+    "\033[?25l",             /* civis (TB_CAP_HIDE_CURSOR) */
+    "\033[H\033[2J",         /* clear (TB_CAP_CLEAR_SCREEN) */
+    "\033[m\017",            /* sgr0 (TB_CAP_SGR0) */
+    "\033[4m",               /* smul (TB_CAP_UNDERLINE) */
+    "\033[1m",               /* bold (TB_CAP_BOLD) */
+    "\033[5m",               /* blink (TB_CAP_BLINK) */
+    "",                      /* sitm (TB_CAP_ITALIC) */
+    "\033[7m",               /* rev (TB_CAP_REVERSE) */
+    "",                      /* smkx (TB_CAP_ENTER_KEYPAD) */
+    "",                      /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    "",                      /* dim (TB_CAP_DIM) */
+    "",                      /* invis (TB_CAP_INVISIBLE) */
 };
 
 static struct {
@@ -1115,7 +1135,7 @@ static struct {
     const uint16_t key;
     const uint8_t mod;
 } builtin_mod_caps[] = {
-  // xterm arrows
+  /* xterm arrows */
     {"\x1b[1;2A",    TB_KEY_ARROW_UP,    TB_MOD_SHIFT                           },
     {"\x1b[1;3A",    TB_KEY_ARROW_UP,    TB_MOD_ALT                             },
     {"\x1b[1;4A",    TB_KEY_ARROW_UP,    TB_MOD_ALT | TB_MOD_SHIFT              },
@@ -1148,7 +1168,7 @@ static struct {
     {"\x1b[1;7D",    TB_KEY_ARROW_LEFT,  TB_MOD_CTRL | TB_MOD_ALT               },
     {"\x1b[1;8D",    TB_KEY_ARROW_LEFT,  TB_MOD_CTRL | TB_MOD_ALT | TB_MOD_SHIFT},
 
- // xterm keys
+ /* xterm keys */
     {"\x1b[1;2H",    TB_KEY_HOME,        TB_MOD_SHIFT                           },
     {"\x1b[1;3H",    TB_KEY_HOME,        TB_MOD_ALT                             },
     {"\x1b[1;4H",    TB_KEY_HOME,        TB_MOD_ALT | TB_MOD_SHIFT              },
@@ -1293,7 +1313,7 @@ static struct {
     {"\x1b[24;7~",   TB_KEY_F12,         TB_MOD_CTRL | TB_MOD_ALT               },
     {"\x1b[24;8~",   TB_KEY_F12,         TB_MOD_CTRL | TB_MOD_ALT | TB_MOD_SHIFT},
 
- // rxvt arrows
+ /* rxvt arrows */
     {"\x1b[a",       TB_KEY_ARROW_UP,    TB_MOD_SHIFT                           },
     {"\x1b\x1b[A",   TB_KEY_ARROW_UP,    TB_MOD_ALT                             },
     {"\x1b\x1b[a",   TB_KEY_ARROW_UP,    TB_MOD_ALT | TB_MOD_SHIFT              },
@@ -1318,7 +1338,7 @@ static struct {
     {"\x1bOd",       TB_KEY_ARROW_LEFT,  TB_MOD_CTRL                            },
     {"\x1b\x1bOd",   TB_KEY_ARROW_LEFT,  TB_MOD_CTRL | TB_MOD_ALT               },
 
- // rxvt keys
+ /* rxvt keys */
     {"\x1b[7$",      TB_KEY_HOME,        TB_MOD_SHIFT                           },
     {"\x1b\x1b[7~",  TB_KEY_HOME,        TB_MOD_ALT                             },
     {"\x1b\x1b[7$",  TB_KEY_HOME,        TB_MOD_ALT | TB_MOD_SHIFT              },
@@ -1463,13 +1483,13 @@ static struct {
     {"\x1b[24@",     TB_KEY_F12,         TB_MOD_CTRL | TB_MOD_SHIFT             },
     {"\x1b[24$",     TB_KEY_F12,         TB_MOD_SHIFT                           },
 
- // linux console/putty arrows
+ /* linux console/putty arrows */
     {"\x1b[A",       TB_KEY_ARROW_UP,    TB_MOD_SHIFT                           },
     {"\x1b[B",       TB_KEY_ARROW_DOWN,  TB_MOD_SHIFT                           },
     {"\x1b[C",       TB_KEY_ARROW_RIGHT, TB_MOD_SHIFT                           },
     {"\x1b[D",       TB_KEY_ARROW_LEFT,  TB_MOD_SHIFT                           },
 
- // more putty arrows
+ /* more putty arrows */
     {"\x1bOA",       TB_KEY_ARROW_UP,    TB_MOD_CTRL                            },
     {"\x1b\x1bOA",   TB_KEY_ARROW_UP,    TB_MOD_CTRL | TB_MOD_ALT               },
     {"\x1bOB",       TB_KEY_ARROW_DOWN,  TB_MOD_CTRL                            },
@@ -1635,7 +1655,7 @@ int tb_present(void) {
 
     int rv;
 
-    // TODO Assert global.back.(width,height) == global.front.(width,height)
+    /* TODO Assert global.back.(width,height) == global.front.(width,height) */
 
     global.last_x = -1;
     global.last_y = -1;
@@ -1666,7 +1686,7 @@ int tb_present(void) {
 
                 send_attr(back->fg, back->bg);
                 if (w > 1 && x >= global.front.width - (w - 1)) {
-                    // Not enough room for wide char, send spaces
+                    /* Not enough room for wide char, send spaces */
                     for (i = x; i < global.front.width; i++) {
                         send_char(i, y, ' ');
                     }
@@ -1680,12 +1700,12 @@ int tb_present(void) {
                             send_char(x, y, back->ch);
                     }
 
-                    // When wcwidth>1, we need to advance the cursor by more
-                    // than 1, thereby skipping some cells. Set these skipped
-                    // cells to an invalid codepoint in the front buffer, so
-                    // that if this cell is later replaced by a wcwidth==1 char,
-                    // we'll get a cell_cmp diff for the skipped cells and
-                    // properly re-render.
+                    /* When wcwidth>1, we need to advance the cursor by more */
+                    /* than 1, thereby skipping some cells. Set these skipped */
+                    /* cells to an invalid codepoint in the front buffer, so */
+                    /* that if this cell is later replaced by a wcwidth==1 char, */
+                    /* we'll get a cell_cmp diff for the skipped cells and */
+                    /* properly re-render. */
                     for (i = 1; i < w; i++) {
                         struct tb_cell *front_wide;
                         uint32_t invalid = -1;
@@ -1761,11 +1781,11 @@ int tb_extend_cell(int x, int y, uint32_t ch) {
     struct tb_cell *cell;
     size_t nech;
     if_err_return(rv, cellbuf_get(&global.back, x, y, &cell));
-    if (cell->nech > 0) { // append to ech
+    if (cell->nech > 0) { /* append to ech */
         nech = cell->nech + 1;
         if_err_return(rv, cell_reserve_ech(cell, nech));
         cell->ech[nech - 1] = ch;
-    } else { // make new ech
+    } else { /* make new ech */
         nech = 2;
         if_err_return(rv, cell_reserve_ech(cell, nech));
         cell->ech[0] = cell->ch;
@@ -1863,12 +1883,12 @@ int tb_print_ex(int x, int y, uintattr_t fg, uintattr_t bg, size_t *out_w,
     while (*str) {
         rv = tb_utf8_char_to_unicode(&uni, str);
         if (rv < 0) {
-            uni = 0xfffd; // replace invalid UTF-8 char with U+FFFD
+            uni = 0xfffd; /* replace invalid UTF-8 char with U+FFFD */
             str += rv * -1;
         } else if (rv > 0) {
             str += rv;
         } else {
-            break; // shouldn't get here
+            break; /* shouldn't get here */
         }
         w = wcwidth((wchar_t)uni);
         if (w < 0) w = 1;
@@ -2143,23 +2163,23 @@ static int init_term_caps(void) {
 static int init_cap_trie(void) {
     int rv, i;
 
-    // Add caps from terminfo or built-in
-    //
-    // Collisions are expected as some terminfo entries have dupes. (For
-    // example, att605-pc collides on TB_CAP_F4 and TB_CAP_DELETE.) First cap
-    // in TB_CAP_* index order will win.
-    //
-    // TODO Reorder TB_CAP_* so more critical caps come first.
+    /* Add caps from terminfo or built-in */
+    /* */
+    /* Collisions are expected as some terminfo entries have dupes. (For */
+    /* example, att605-pc collides on TB_CAP_F4 and TB_CAP_DELETE.) First cap */
+    /* in TB_CAP_* index order will win. */
+    /* */
+    /* TODO Reorder TB_CAP_* so more critical caps come first. */
     for (i = 0; i < TB_CAP__COUNT_KEYS; i++) {
         rv = cap_trie_add(global.caps[i], tb_key_i(i), 0);
         if (rv != TB_OK && rv != TB_ERR_CAP_COLLISION) return rv;
     }
 
-    // Add built-in mod caps
-    //
-    // Collisions are OK here as well. This can happen if global.caps collides
-    // with builtin_mod_caps. It is desirable to give precedence to global.caps
-    // here.
+    /* Add built-in mod caps */
+    /* */
+    /* Collisions are OK here as well. This can happen if global.caps collides */
+    /* with builtin_mod_caps. It is desirable to give precedence to global.caps */
+    /* here. */
     for (i = 0; builtin_mod_caps[i].cap != NULL; i++) {
         rv = cap_trie_add(builtin_mod_caps[i].cap, builtin_mod_caps[i].key,
             builtin_mod_caps[i].mod);
@@ -2173,13 +2193,13 @@ static int cap_trie_add(const char *cap, uint16_t key, uint8_t mod) {
     struct cap_trie_t *next, *node = &global.cap_trie;
     size_t i, j;
 
-    if (!cap || strlen(cap) <= 0) return TB_OK; // Nothing to do for empty caps
+    if (!cap || strlen(cap) <= 0) return TB_OK; /* Nothing to do for empty caps */
 
     for (i = 0; cap[i] != '\0'; i++) {
         char c = cap[i];
         next = NULL;
 
-        // Check if c is already a child of node
+        /* Check if c is already a child of node */
         for (j = 0; j < node->nchildren; j++) {
             if (node->children[j].c == c) {
                 next = &node->children[j];
@@ -2187,7 +2207,7 @@ static int cap_trie_add(const char *cap, uint16_t key, uint8_t mod) {
             }
         }
         if (!next) {
-            // We need to add a new child to node
+            /* We need to add a new child to node */
             node->nchildren += 1;
             node->children =
                 tb_realloc(node->children, sizeof(*node) * node->nchildren);
@@ -2199,12 +2219,12 @@ static int cap_trie_add(const char *cap, uint16_t key, uint8_t mod) {
             next->c = c;
         }
 
-        // Continue
+        /* Continue */
         node = next;
     }
 
     if (node->is_leaf) {
-        // Already a leaf here
+        /* Already a leaf here */
         return TB_ERR_CAP_COLLISION;
     }
 
@@ -2224,7 +2244,7 @@ static int cap_trie_find(const char *buf, size_t nbuf, struct cap_trie_t **last,
         char c = buf[i];
         next = NULL;
 
-        // Find c in node.children
+        /* Find c in node.children */
         for (j = 0; j < node->nchildren; j++) {
             if (node->children[j].c == c) {
                 next = &node->children[j];
@@ -2232,7 +2252,7 @@ static int cap_trie_find(const char *buf, size_t nbuf, struct cap_trie_t **last,
             }
         }
         if (!next) {
-            // Not found
+            /* Not found */
             return TB_OK;
         }
         node = next;
@@ -2310,7 +2330,7 @@ static int update_term_size(void) {
     struct winsize sz;
     memset(&sz, 0, sizeof(sz));
 
-    // Try ioctl TIOCGWINSZ
+    /* Try ioctl TIOCGWINSZ */
     if (ioctl(global.ttyfd, TIOCGWINSZ, &sz) == 0) {
         global.width = sz.ws_col;
         global.height = sz.ws_row;
@@ -2318,7 +2338,7 @@ static int update_term_size(void) {
     }
     ioctl_errno = errno;
 
-    // Try >cursor(9999,9999), >u7, <u6
+    /* Try >cursor(9999,9999), >u7, <u6 */
     if_ok_return(rv, update_term_size_via_esc());
 
     global.last_errno = ioctl_errno;
@@ -2330,7 +2350,7 @@ static int update_term_size_via_esc(void) {
 #define TB_RESIZE_FALLBACK_MS 1000
 #endif
 
-    char *move_and_report = "\x1b[9999;9999H\x1b[6n";
+    const char *move_and_report = "\x1b[9999;9999H\x1b[6n";
     ssize_t write_rv =
         write(global.wfd, move_and_report, strlen(move_and_report));
     if (write_rv != (ssize_t)strlen(move_and_report)) {
@@ -2420,33 +2440,33 @@ static int load_terminfo(void) {
     int rv;
     char tmp[TB_PATH_MAX];
 
-    // See terminfo(5) "Fetching Compiled Descriptions" for a description of
-    // this behavior. Some of these paths are compile-time ncurses options, so
-    // best guesses are used here.
+    /* See terminfo(5) "Fetching Compiled Descriptions" for a description of */
+    /* this behavior. Some of these paths are compile-time ncurses options, so */
+    /* best guesses are used here. */
     const char *term = getenv("TERM");
     if (!term) {
         return TB_ERR;
     }
 
-    // If TERMINFO is set, try that directory and stop
+    /* If TERMINFO is set, try that directory and stop */
     const char *terminfo = getenv("TERMINFO");
     if (terminfo) {
         return load_terminfo_from_path(terminfo, term);
     }
 
-    // Next try ~/.terminfo
+    /* Next try ~/.terminfo */
     const char *home = getenv("HOME");
     if (home) {
         snprintf_or_return(rv, tmp, sizeof(tmp), "%s/.terminfo", home);
         if_ok_return(rv, load_terminfo_from_path(tmp, term));
     }
 
-    // Next try TERMINFO_DIRS
-    //
-    // Note, empty entries are supposed to be interpretted as the "compiled-in
-    // default", which is of course system-dependent. Previously /etc/terminfo
-    // was used here. Let's skip empty entries altogether rather than give
-    // precedence to a guess, and check common paths after this loop.
+    /* Next try TERMINFO_DIRS */
+    /* */
+    /* Note, empty entries are supposed to be interpretted as the "compiled-in */
+    /* default", which is of course system-dependent. Previously /etc/terminfo */
+    /* was used here. Let's skip empty entries altogether rather than give */
+    /* precedence to a guess, and check common paths after this loop. */
     const char *dirs = getenv("TERMINFO_DIRS");
     if (dirs) {
         snprintf_or_return(rv, tmp, sizeof(tmp), "%s", dirs);
@@ -2480,12 +2500,12 @@ static int load_terminfo_from_path(const char *path, const char *term) {
     int rv;
     char tmp[TB_PATH_MAX];
 
-    // Look for term at this terminfo location, e.g., <terminfo>/x/xterm
+    /* Look for term at this terminfo location, e.g., <terminfo>/x/xterm */
     snprintf_or_return(rv, tmp, sizeof(tmp), "%s/%c/%s", path, term[0], term);
     if_ok_return(rv, read_terminfo_path(tmp));
 
 #ifdef __APPLE__
-    // Try the Darwin equivalent path, e.g., <terminfo>/78/xterm
+    /* Try the Darwin equivalent path, e.g., <terminfo>/78/xterm */
     snprintf_or_return(rv, tmp, sizeof(tmp), "%s/%x/%s", path, term[0], term);
     return read_terminfo_path(tmp);
 #endif
@@ -2526,49 +2546,49 @@ static int read_terminfo_path(const char *path) {
 }
 
 static int parse_terminfo_caps(void) {
-    // See term(5) "LEGACY STORAGE FORMAT" and "EXTENDED STORAGE FORMAT" for a
-    // description of this behavior.
+    /* See term(5) "LEGACY STORAGE FORMAT" and "EXTENDED STORAGE FORMAT" for a */
+    /* description of this behavior. */
 
-    // Ensure there's at least a header's worth of data
+    /* Ensure there's at least a header's worth of data */
     if (global.nterminfo < 6) {
         return TB_ERR;
     }
 
     int16_t *header = (int16_t *)global.terminfo;
-    // header[0] the magic number (octal 0432 or 01036)
-    // header[1] the size, in bytes, of the names section
-    // header[2] the number of bytes in the boolean section
-    // header[3] the number of short integers in the numbers section
-    // header[4] the number of offsets (short integers) in the strings section
-    // header[5] the size, in bytes, of the string table
+    /* header[0] the magic number (octal 0432 or 01036) */
+    /* header[1] the size, in bytes, of the names section */
+    /* header[2] the number of bytes in the boolean section */
+    /* header[3] the number of short integers in the numbers section */
+    /* header[4] the number of offsets (short integers) in the strings section */
+    /* header[5] the size, in bytes, of the string table */
 
-    // Legacy ints are 16-bit, extended ints are 32-bit
-    const int bytes_per_int = header[0] == 01036 ? 4  // 32-bit
-                                                 : 2; // 16-bit
+    /* Legacy ints are 16-bit, extended ints are 32-bit */
+    const int bytes_per_int = header[0] == 01036 ? 4  /* 32-bit */
+                                                 : 2; /* 16-bit */
 
-    // > Between the boolean section and the number section, a null byte will be
-    // > inserted, if necessary, to ensure that the number section begins on an
-    // > even byte
+    /* > Between the boolean section and the number section, a null byte will be */
+    /* > inserted, if necessary, to ensure that the number section begins on an */
+    /* > even byte */
     const int align_offset = (header[1] + header[2]) % 2 != 0 ? 1 : 0;
 
     const int pos_str_offsets =
-        (6 * sizeof(int16_t)) // header (12 bytes)
-        + header[1]           // length of names section
-        + header[2]           // length of boolean section
+        (6 * sizeof(int16_t)) /* header (12 bytes) */
+        + header[1]           /* length of names section */
+        + header[2]           /* length of boolean section */
         + align_offset +
-        (header[3] * bytes_per_int); // length of numbers section
+        (header[3] * bytes_per_int); /* length of numbers section */
 
     const int pos_str_table =
         pos_str_offsets +
-        (header[4] * sizeof(int16_t)); // length of string offsets table
+        (header[4] * sizeof(int16_t)); /* length of string offsets table */
 
-    // Load caps
+    /* Load caps */
     int i;
     for (i = 0; i < TB_CAP__COUNT; i++) {
         const char *cap = get_terminfo_string(pos_str_offsets, header[4],
             pos_str_table, header[5], terminfo_cap_indexes[i]);
         if (!cap) {
-            // Something is not right
+            /* Something is not right */
             return TB_ERR;
         }
         global.caps[i] = cap;
@@ -2585,7 +2605,7 @@ static int load_builtin_caps(void) {
         return TB_ERR_NO_TERM;
     }
 
-    // Check for exact TERM match
+    /* Check for exact TERM match */
     for (i = 0; builtin_terms[i].name != NULL; i++) {
         if (strcmp(term, builtin_terms[i].name) == 0) {
             for (j = 0; j < TB_CAP__COUNT; j++) {
@@ -2595,7 +2615,7 @@ static int load_builtin_caps(void) {
         }
     }
 
-    // Check for partial TERM or alias match
+    /* Check for partial TERM or alias match */
     for (i = 0; builtin_terms[i].name != NULL; i++) {
         if (strstr(term, builtin_terms[i].name) != NULL ||
             (*(builtin_terms[i].alias) != '\0' &&
@@ -2616,26 +2636,26 @@ static const char *get_terminfo_string(int16_t str_offsets_pos,
     int16_t str_index) {
     const int str_byte_index = (int)str_index * (int)sizeof(int16_t);
     if (str_byte_index >= (int)str_offsets_len * (int)sizeof(int16_t)) {
-        // An offset beyond the table indicates absent
-        // See `convert_strings` in tinfo `read_entry.c`
+        /* An offset beyond the table indicates absent */
+        /* See `convert_strings` in tinfo `read_entry.c` */
         return "";
     }
     const int16_t *str_offset =
         (int16_t *)(global.terminfo + (int)str_offsets_pos + str_byte_index);
     if ((char *)str_offset >= global.terminfo + global.nterminfo) {
-        // str_offset points beyond end of entry
-        // Truncated/corrupt terminfo entry?
+        /* str_offset points beyond end of entry */
+        /* Truncated/corrupt terminfo entry? */
         return NULL;
     }
     if (*str_offset < 0 || *str_offset >= str_table_len) {
-        // A negative offset indicates absent
-        // An offset beyond the table indicates absent
-        // See `convert_strings` in tinfo `read_entry.c`
+        /* A negative offset indicates absent */
+        /* An offset beyond the table indicates absent */
+        /* See `convert_strings` in tinfo `read_entry.c` */
         return "";
     }
     if (((size_t)((int)str_table_pos + (int)*str_offset)) >= global.nterminfo) {
-        // string points beyond end of entry
-        // Truncated/corrupt terminfo entry?
+        /* string points beyond end of entry */
+        /* Truncated/corrupt terminfo entry? */
         return NULL;
     }
     return (
@@ -2667,7 +2687,7 @@ static int wait_event(struct tb_event *event, int timeout) {
             select(maxfd + 1, &fds, NULL, NULL, (timeout < 0) ? NULL : &tv);
 
         if (select_rv < 0) {
-            // Let EINTR/EAGAIN bubble up
+            /* Let EINTR/EAGAIN bubble up */
             global.last_errno = errno;
             return TB_ERR_POLL;
         } else if (select_rv == 0) {
@@ -2690,7 +2710,7 @@ static int wait_event(struct tb_event *event, int timeout) {
         if (resize_has_events) {
             int ignore = 0;
             read(global.resize_pipefd[0], &ignore, sizeof(ignore));
-            // TODO Harden against errors encountered mid-resize
+            /* TODO Harden against errors encountered mid-resize */
             if_err_return(rv, update_term_size());
             if_err_return(rv, resize_cellbufs());
             event->type = TB_EVENT_RESIZE;
@@ -2715,13 +2735,13 @@ static int extract_event(struct tb_event *event) {
     }
 
     if (in->buf[0] == '\x1b') {
-        // Escape sequence?
-        // In TB_INPUT_ESC, skip if the buffer is a single escape char
+        /* Escape sequence? */
+        /* In TB_INPUT_ESC, skip if the buffer is a single escape char */
         if (!((global.input_mode & TB_INPUT_ESC) && in->len == 1)) {
             if_ok_or_need_more_return(rv, extract_esc(event));
         }
 
-        // Escape key?
+        /* Escape key? */
         if (global.input_mode & TB_INPUT_ESC) {
             event->type = TB_EVENT_KEY;
             event->ch = 0;
@@ -2731,13 +2751,13 @@ static int extract_event(struct tb_event *event) {
             return TB_OK;
         }
 
-        // Recurse for alt key
+        /* Recurse for alt key */
         event->mod |= TB_MOD_ALT;
         bytebuf_shift(in, 1);
         return extract_event(event);
     }
 
-    // ASCII control key?
+    /* ASCII control key? */
     if ((uint16_t)in->buf[0] < TB_KEY_SPACE || in->buf[0] == TB_KEY_BACKSPACE2)
     {
         event->type = TB_EVENT_KEY;
@@ -2748,7 +2768,7 @@ static int extract_event(struct tb_event *event) {
         return TB_OK;
     }
 
-    // UTF-8?
+    /* UTF-8? */
     if (in->len >= (size_t)tb_utf8_char_length(in->buf[0])) {
         event->type = TB_EVENT_KEY;
         tb_utf8_char_to_unicode(&event->ch, in->buf);
@@ -2757,7 +2777,7 @@ static int extract_event(struct tb_event *event) {
         return TB_OK;
     }
 
-    // Need more input
+    /* Need more input */
     return TB_ERR;
 }
 
@@ -2799,7 +2819,7 @@ static int extract_esc_cap(struct tb_event *event) {
 
     if_err_return(rv, cap_trie_find(in->buf, in->len, &node, &depth));
     if (node->is_leaf) {
-        // Found a leaf node
+        /* Found a leaf node */
         event->type = TB_EVENT_KEY;
         event->ch = 0;
         event->key = node->key;
@@ -2807,7 +2827,7 @@ static int extract_esc_cap(struct tb_event *event) {
         bytebuf_shift(in, depth);
         return TB_OK;
     } else if (node->nchildren > 0 && in->len <= depth) {
-        // Found a branch node (not enough input)
+        /* Found a branch node (not enough input) */
         return TB_ERR_NEED_MORE;
     }
 
@@ -2819,20 +2839,20 @@ static int extract_esc_mouse(struct tb_event *event) {
 
     enum type { TYPE_VT200 = 0, TYPE_1006, TYPE_1015, TYPE_MAX };
 
-    const char *cmp[TYPE_MAX] = {//
-        // X10 mouse encoding, the simplest one
-        // \x1b [ M Cb Cx Cy
+    const char *cmp[TYPE_MAX] = {/* */
+        /* X10 mouse encoding, the simplest one */
+        /* \x1b [ M Cb Cx Cy */
         [TYPE_VT200] = "\x1b[M",
-        // xterm 1006 extended mode or urxvt 1015 extended mode
-        // xterm: \x1b [ < Cb ; Cx ; Cy (M or m)
+        /* xterm 1006 extended mode or urxvt 1015 extended mode */
+        /* xterm: \x1b [ < Cb ; Cx ; Cy (M or m) */
         [TYPE_1006] = "\x1b[<",
-        // urxvt: \x1b [ Cb ; Cx ; Cy M
+        /* urxvt: \x1b [ Cb ; Cx ; Cy M */
         [TYPE_1015] = "\x1b["};
 
     enum type type = 0;
     int ret = TB_ERR;
 
-    // Unrolled at compile-time (probably)
+    /* Unrolled at compile-time (probably) */
     for (; type < TYPE_MAX; type++) {
         size_t size = strlen(cmp[type]);
 
@@ -2842,7 +2862,7 @@ static int extract_esc_mouse(struct tb_event *event) {
     }
 
     if (type == TYPE_MAX) {
-        ret = TB_ERR; // No match
+        ret = TB_ERR; /* No match */
         return ret;
     }
 
@@ -2880,7 +2900,7 @@ static int extract_esc_mouse(struct tb_event *event) {
                         event->mod |= TB_MOD_MOTION;
                     }
 
-                    // the coord is 1,1 for upper left
+                    /* the coord is 1,1 for upper left */
                     event->x = ((uint8_t)in->buf[4]) - 0x21;
                     event->y = ((uint8_t)in->buf[5]) - 0x21;
 
@@ -2891,7 +2911,7 @@ static int extract_esc_mouse(struct tb_event *event) {
             }
             break;
         case TYPE_1006:
-            // fallthrough
+            /* fallthrough */
         case TYPE_1015: {
             size_t index_fail = (size_t)-1;
 
@@ -2905,8 +2925,8 @@ static int extract_esc_mouse(struct tb_event *event) {
             size_t indices[FIRST_LAST_MAX] = {index_fail, index_fail,
                 index_fail};
             int m_is_capital = 0;
-
-            for (size_t i = 0; i < in->len; i++) {
+            size_t i;
+            for (i = 0; i < in->len; i++) {
                 if (in->buf[i] == ';') {
                     if (indices[FIRST_SEMICOLON] == index_fail) {
                         indices[FIRST_SEMICOLON] = i;
@@ -2966,7 +2986,7 @@ static int extract_esc_mouse(struct tb_event *event) {
 
                 if (!fail) {
                     if (!m_is_capital) {
-                        // on xterm mouse release is signaled by lowercase m
+                        /* on xterm mouse release is signaled by lowercase m */
                         event->key = TB_KEY_MOUSE_RELEASE;
                     }
 
@@ -3026,10 +3046,10 @@ static int send_attr(uintattr_t fg, uintattr_t bg) {
     switch (global.output_mode) {
         default:
         case TB_OUTPUT_NORMAL:
-            // The minus 1 below is because our colors are 1-indexed starting
-            // from black. Black is represented by a 30, 40, 90, or 100 for fg,
-            // bg, bright fg, or bright bg respectively. Red is 31, 41, 91,
-            // 101, etc.
+            /* The minus 1 below is because our colors are 1-indexed starting */
+            /* from black. Black is represented by a 30, 40, 90, or 100 for fg, */
+            /* bg, bright fg, or bright bg respectively. Red is 31, 41, 91, */
+            /* 101, etc. */
             cfg = (fg & TB_BRIGHT ? 90 : 30) + (fg & 0x0f) - 1;
             cbg = (bg & TB_BRIGHT ? 100 : 40) + (bg & 0x0f) - 1;
             break;
@@ -3230,7 +3250,7 @@ static int send_cluster(int x, int y, uint32_t *ch, size_t nch) {
     for (i = 0; i < (int)nch; i++) {
         uint32_t ch32 = *(ch + i);
         int chu8_len;
-        if (ch32 == 0) { // replace null with space (from termbox 19dbee5)
+        if (ch32 == 0) { /* replace null with space (from termbox 19dbee5) */
             chu8_len = 1;
             chu8[0] = ' ';
         } else {
@@ -3265,7 +3285,7 @@ static int cell_cmp(struct tb_cell *a, struct tb_cell *b) {
 #ifdef TB_OPT_EGC
     if (a->nech != b->nech) {
         return 1;
-    } else if (a->nech > 0) { // a->nech == b->nech
+    } else if (a->nech > 0) { /* a->nech == b->nech */
         return memcmp(a->ech, b->ech, a->nech);
     }
 #endif
@@ -3410,7 +3430,7 @@ static int cellbuf_resize(struct cellbuf_t *c, int w, int h) {
 }
 
 static int bytebuf_puts(struct bytebuf_t *b, const char *str) {
-    if (!str || strlen(str) <= 0) return TB_OK; // Nothing to do for empty caps
+    if (!str || strlen(str) <= 0) return TB_OK; /* Nothing to do for empty caps */
     return bytebuf_nputs(b, str, (size_t)strlen(str));
 }
 
@@ -3439,7 +3459,7 @@ static int bytebuf_flush(struct bytebuf_t *b, int fd) {
     }
     ssize_t write_rv = write(fd, b->buf, b->len);
     if (write_rv < 0 || (size_t)write_rv != b->len) {
-        // Note, errno will be 0 on partial write
+        /* Note, errno will be 0 on partial write */
         global.last_errno = errno;
         return TB_ERR;
     }
@@ -3478,3 +3498,6 @@ static int bytebuf_free(struct bytebuf_t *b) {
 }
 
 #endif /* TB_IMPL */
+
+/* unsilence GCC warnings from beginning of file */
+#pragma GCC diagnostic pop
