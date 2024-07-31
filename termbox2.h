@@ -32,6 +32,7 @@ SOFTWARE.
  */
 #pragma GCC diagnostic push
 
+#pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #pragma clang diagnostic ignored "-Wunknown-warning-option"
 
 #pragma GCC diagnostic ignored "-Wpedantic"
