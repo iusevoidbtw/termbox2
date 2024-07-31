@@ -182,77 +182,77 @@ extern "C" {
 #define tb_key_i(i)             0xffff - (i)
 /* Terminal-dependent key constants (tb_event.key) and terminfo capabilities */
 /* BEGIN codegen h */
-/* Produced by ./codegen.sh on Thu, 13 Jul 2023 05:46:13 +0000 */
-#define TB_KEY_F1               (0xffff - 0)
-#define TB_KEY_F2               (0xffff - 1)
-#define TB_KEY_F3               (0xffff - 2)
-#define TB_KEY_F4               (0xffff - 3)
-#define TB_KEY_F5               (0xffff - 4)
-#define TB_KEY_F6               (0xffff - 5)
-#define TB_KEY_F7               (0xffff - 6)
-#define TB_KEY_F8               (0xffff - 7)
-#define TB_KEY_F9               (0xffff - 8)
-#define TB_KEY_F10              (0xffff - 9)
-#define TB_KEY_F11              (0xffff - 10)
-#define TB_KEY_F12              (0xffff - 11)
-#define TB_KEY_INSERT           (0xffff - 12)
-#define TB_KEY_DELETE           (0xffff - 13)
-#define TB_KEY_HOME             (0xffff - 14)
-#define TB_KEY_END              (0xffff - 15)
-#define TB_KEY_PGUP             (0xffff - 16)
-#define TB_KEY_PGDN             (0xffff - 17)
-#define TB_KEY_ARROW_UP         (0xffff - 18)
-#define TB_KEY_ARROW_DOWN       (0xffff - 19)
-#define TB_KEY_ARROW_LEFT       (0xffff - 20)
-#define TB_KEY_ARROW_RIGHT      (0xffff - 21)
-#define TB_KEY_BACK_TAB         (0xffff - 22)
-#define TB_KEY_MOUSE_LEFT       (0xffff - 23)
-#define TB_KEY_MOUSE_RIGHT      (0xffff - 24)
-#define TB_KEY_MOUSE_MIDDLE     (0xffff - 25)
-#define TB_KEY_MOUSE_RELEASE    (0xffff - 26)
-#define TB_KEY_MOUSE_WHEEL_UP   (0xffff - 27)
+/* Produced by ./codegen.sh on Wed, 31 Jul 2024 09:33:36 +0000 */
+#define TB_KEY_F1 (0xffff - 0)
+#define TB_KEY_F2 (0xffff - 1)
+#define TB_KEY_F3 (0xffff - 2)
+#define TB_KEY_F4 (0xffff - 3)
+#define TB_KEY_F5 (0xffff - 4)
+#define TB_KEY_F6 (0xffff - 5)
+#define TB_KEY_F7 (0xffff - 6)
+#define TB_KEY_F8 (0xffff - 7)
+#define TB_KEY_F9 (0xffff - 8)
+#define TB_KEY_F10 (0xffff - 9)
+#define TB_KEY_F11 (0xffff - 10)
+#define TB_KEY_F12 (0xffff - 11)
+#define TB_KEY_INSERT (0xffff - 12)
+#define TB_KEY_DELETE (0xffff - 13)
+#define TB_KEY_HOME (0xffff - 14)
+#define TB_KEY_END (0xffff - 15)
+#define TB_KEY_PGUP (0xffff - 16)
+#define TB_KEY_PGDN (0xffff - 17)
+#define TB_KEY_ARROW_UP (0xffff - 18)
+#define TB_KEY_ARROW_DOWN (0xffff - 19)
+#define TB_KEY_ARROW_LEFT (0xffff - 20)
+#define TB_KEY_ARROW_RIGHT (0xffff - 21)
+#define TB_KEY_BACK_TAB (0xffff - 22)
+#define TB_KEY_MOUSE_LEFT (0xffff - 23)
+#define TB_KEY_MOUSE_RIGHT (0xffff - 24)
+#define TB_KEY_MOUSE_MIDDLE (0xffff - 25)
+#define TB_KEY_MOUSE_RELEASE (0xffff - 26)
+#define TB_KEY_MOUSE_WHEEL_UP (0xffff - 27)
 #define TB_KEY_MOUSE_WHEEL_DOWN (0xffff - 28)
 
-#define TB_CAP_F1               0
-#define TB_CAP_F2               1
-#define TB_CAP_F3               2
-#define TB_CAP_F4               3
-#define TB_CAP_F5               4
-#define TB_CAP_F6               5
-#define TB_CAP_F7               6
-#define TB_CAP_F8               7
-#define TB_CAP_F9               8
-#define TB_CAP_F10              9
-#define TB_CAP_F11              10
-#define TB_CAP_F12              11
-#define TB_CAP_INSERT           12
-#define TB_CAP_DELETE           13
-#define TB_CAP_HOME             14
-#define TB_CAP_END              15
-#define TB_CAP_PGUP             16
-#define TB_CAP_PGDN             17
-#define TB_CAP_ARROW_UP         18
-#define TB_CAP_ARROW_DOWN       19
-#define TB_CAP_ARROW_LEFT       20
-#define TB_CAP_ARROW_RIGHT      21
-#define TB_CAP_BACK_TAB         22
-#define TB_CAP__COUNT_KEYS      23
-#define TB_CAP_ENTER_CA         23
-#define TB_CAP_EXIT_CA          24
-#define TB_CAP_SHOW_CURSOR      25
-#define TB_CAP_HIDE_CURSOR      26
-#define TB_CAP_CLEAR_SCREEN     27
-#define TB_CAP_SGR0             28
-#define TB_CAP_UNDERLINE        29
-#define TB_CAP_BOLD             30
-#define TB_CAP_BLINK            31
-#define TB_CAP_ITALIC           32
-#define TB_CAP_REVERSE          33
-#define TB_CAP_ENTER_KEYPAD     34
-#define TB_CAP_EXIT_KEYPAD      35
-#define TB_CAP_DIM              36
-#define TB_CAP_INVISIBLE        37
-#define TB_CAP__COUNT           38
+#define TB_CAP_F1 0
+#define TB_CAP_F2 1
+#define TB_CAP_F3 2
+#define TB_CAP_F4 3
+#define TB_CAP_F5 4
+#define TB_CAP_F6 5
+#define TB_CAP_F7 6
+#define TB_CAP_F8 7
+#define TB_CAP_F9 8
+#define TB_CAP_F10 9
+#define TB_CAP_F11 10
+#define TB_CAP_F12 11
+#define TB_CAP_INSERT 12
+#define TB_CAP_DELETE 13
+#define TB_CAP_HOME 14
+#define TB_CAP_END 15
+#define TB_CAP_PGUP 16
+#define TB_CAP_PGDN 17
+#define TB_CAP_ARROW_UP 18
+#define TB_CAP_ARROW_DOWN 19
+#define TB_CAP_ARROW_LEFT 20
+#define TB_CAP_ARROW_RIGHT 21
+#define TB_CAP_BACK_TAB 22
+#define TB_CAP__COUNT_KEYS 23
+#define TB_CAP_ENTER_CA 23
+#define TB_CAP_EXIT_CA 24
+#define TB_CAP_SHOW_CURSOR 25
+#define TB_CAP_HIDE_CURSOR 26
+#define TB_CAP_CLEAR_SCREEN 27
+#define TB_CAP_SGR0 28
+#define TB_CAP_UNDERLINE 29
+#define TB_CAP_BOLD 30
+#define TB_CAP_BLINK 31
+#define TB_CAP_ITALIC 32
+#define TB_CAP_REVERSE 33
+#define TB_CAP_ENTER_KEYPAD 34
+#define TB_CAP_EXIT_KEYPAD 35
+#define TB_CAP_DIM 36
+#define TB_CAP_INVISIBLE 37
+#define TB_CAP__COUNT 38
 /* END codegen h */
 
 /* Some hard-coded caps */
@@ -819,299 +819,299 @@ struct tb_global_t {
 static struct tb_global_t global = {0};
 
 /* BEGIN codegen c */
-/* Produced by ./codegen.sh on Thu, 13 Jul 2023 05:46:13 +0000 */
+/* Produced by ./codegen.sh on Wed, 31 Jul 2024 09:33:36 +0000 */
 
 static const int16_t terminfo_cap_indexes[] = {
-    66,  /* kf1 (TB_CAP_F1) */
-    68,  /* kf2 (TB_CAP_F2) */
-    69,  /* kf3 (TB_CAP_F3) */
-    70,  /* kf4 (TB_CAP_F4) */
-    71,  /* kf5 (TB_CAP_F5) */
-    72,  /* kf6 (TB_CAP_F6) */
-    73,  /* kf7 (TB_CAP_F7) */
-    74,  /* kf8 (TB_CAP_F8) */
-    75,  /* kf9 (TB_CAP_F9) */
-    67,  /* kf10 (TB_CAP_F10) */
+    66, /* kf1 (TB_CAP_F1) */
+    68, /* kf2 (TB_CAP_F2) */
+    69, /* kf3 (TB_CAP_F3) */
+    70, /* kf4 (TB_CAP_F4) */
+    71, /* kf5 (TB_CAP_F5) */
+    72, /* kf6 (TB_CAP_F6) */
+    73, /* kf7 (TB_CAP_F7) */
+    74, /* kf8 (TB_CAP_F8) */
+    75, /* kf9 (TB_CAP_F9) */
+    67, /* kf10 (TB_CAP_F10) */
     216, /* kf11 (TB_CAP_F11) */
     217, /* kf12 (TB_CAP_F12) */
-    77,  /* kich1 (TB_CAP_INSERT) */
-    59,  /* kdch1 (TB_CAP_DELETE) */
-    76,  /* khome (TB_CAP_HOME) */
+    77, /* kich1 (TB_CAP_INSERT) */
+    59, /* kdch1 (TB_CAP_DELETE) */
+    76, /* khome (TB_CAP_HOME) */
     164, /* kend (TB_CAP_END) */
-    82,  /* kpp (TB_CAP_PGUP) */
-    81,  /* knp (TB_CAP_PGDN) */
-    87,  /* kcuu1 (TB_CAP_ARROW_UP) */
-    61,  /* kcud1 (TB_CAP_ARROW_DOWN) */
-    79,  /* kcub1 (TB_CAP_ARROW_LEFT) */
-    83,  /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    82, /* kpp (TB_CAP_PGUP) */
+    81, /* knp (TB_CAP_PGDN) */
+    87, /* kcuu1 (TB_CAP_ARROW_UP) */
+    61, /* kcud1 (TB_CAP_ARROW_DOWN) */
+    79, /* kcub1 (TB_CAP_ARROW_LEFT) */
+    83, /* kcuf1 (TB_CAP_ARROW_RIGHT) */
     148, /* kcbt (TB_CAP_BACK_TAB) */
-    28,  /* smcup (TB_CAP_ENTER_CA) */
-    40,  /* rmcup (TB_CAP_EXIT_CA) */
-    16,  /* cnorm (TB_CAP_SHOW_CURSOR) */
-    13,  /* civis (TB_CAP_HIDE_CURSOR) */
-    5,   /* clear (TB_CAP_CLEAR_SCREEN) */
-    39,  /* sgr0 (TB_CAP_SGR0) */
-    36,  /* smul (TB_CAP_UNDERLINE) */
-    27,  /* bold (TB_CAP_BOLD) */
-    26,  /* blink (TB_CAP_BLINK) */
+    28, /* smcup (TB_CAP_ENTER_CA) */
+    40, /* rmcup (TB_CAP_EXIT_CA) */
+    16, /* cnorm (TB_CAP_SHOW_CURSOR) */
+    13, /* civis (TB_CAP_HIDE_CURSOR) */
+    5, /* clear (TB_CAP_CLEAR_SCREEN) */
+    39, /* sgr0 (TB_CAP_SGR0) */
+    36, /* smul (TB_CAP_UNDERLINE) */
+    27, /* bold (TB_CAP_BOLD) */
+    26, /* blink (TB_CAP_BLINK) */
     311, /* sitm (TB_CAP_ITALIC) */
-    34,  /* rev (TB_CAP_REVERSE) */
-    89,  /* smkx (TB_CAP_ENTER_KEYPAD) */
-    88,  /* rmkx (TB_CAP_EXIT_KEYPAD) */
-    30,  /* dim (TB_CAP_DIM) */
-    32,  /* invis (TB_CAP_INVISIBLE) */
+    34, /* rev (TB_CAP_REVERSE) */
+    89, /* smkx (TB_CAP_ENTER_KEYPAD) */
+    88, /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    30, /* dim (TB_CAP_DIM) */
+    32, /* invis (TB_CAP_INVISIBLE) */
 };
 
 /* xterm */
 static const char *xterm_caps[] = {
-    "\033OP",                  /* kf1 (TB_CAP_F1) */
-    "\033OQ",                  /* kf2 (TB_CAP_F2) */
-    "\033OR",                  /* kf3 (TB_CAP_F3) */
-    "\033OS",                  /* kf4 (TB_CAP_F4) */
-    "\033[15~",                /* kf5 (TB_CAP_F5) */
-    "\033[17~",                /* kf6 (TB_CAP_F6) */
-    "\033[18~",                /* kf7 (TB_CAP_F7) */
-    "\033[19~",                /* kf8 (TB_CAP_F8) */
-    "\033[20~",                /* kf9 (TB_CAP_F9) */
-    "\033[21~",                /* kf10 (TB_CAP_F10) */
-    "\033[23~",                /* kf11 (TB_CAP_F11) */
-    "\033[24~",                /* kf12 (TB_CAP_F12) */
-    "\033[2~",                 /* kich1 (TB_CAP_INSERT) */
-    "\033[3~",                 /* kdch1 (TB_CAP_DELETE) */
-    "\033OH",                  /* khome (TB_CAP_HOME) */
-    "\033OF",                  /* kend (TB_CAP_END) */
-    "\033[5~",                 /* kpp (TB_CAP_PGUP) */
-    "\033[6~",                 /* knp (TB_CAP_PGDN) */
-    "\033OA",                  /* kcuu1 (TB_CAP_ARROW_UP) */
-    "\033OB",                  /* kcud1 (TB_CAP_ARROW_DOWN) */
-    "\033OD",                  /* kcub1 (TB_CAP_ARROW_LEFT) */
-    "\033OC",                  /* kcuf1 (TB_CAP_ARROW_RIGHT) */
-    "\033[Z",                  /* kcbt (TB_CAP_BACK_TAB) */
+    "\033OP", /* kf1 (TB_CAP_F1) */
+    "\033OQ", /* kf2 (TB_CAP_F2) */
+    "\033OR", /* kf3 (TB_CAP_F3) */
+    "\033OS", /* kf4 (TB_CAP_F4) */
+    "\033[15~", /* kf5 (TB_CAP_F5) */
+    "\033[17~", /* kf6 (TB_CAP_F6) */
+    "\033[18~", /* kf7 (TB_CAP_F7) */
+    "\033[19~", /* kf8 (TB_CAP_F8) */
+    "\033[20~", /* kf9 (TB_CAP_F9) */
+    "\033[21~", /* kf10 (TB_CAP_F10) */
+    "\033[23~", /* kf11 (TB_CAP_F11) */
+    "\033[24~", /* kf12 (TB_CAP_F12) */
+    "\033[2~", /* kich1 (TB_CAP_INSERT) */
+    "\033[3~", /* kdch1 (TB_CAP_DELETE) */
+    "\033OH", /* khome (TB_CAP_HOME) */
+    "\033OF", /* kend (TB_CAP_END) */
+    "\033[5~", /* kpp (TB_CAP_PGUP) */
+    "\033[6~", /* knp (TB_CAP_PGDN) */
+    "\033OA", /* kcuu1 (TB_CAP_ARROW_UP) */
+    "\033OB", /* kcud1 (TB_CAP_ARROW_DOWN) */
+    "\033OD", /* kcub1 (TB_CAP_ARROW_LEFT) */
+    "\033OC", /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    "\033[Z", /* kcbt (TB_CAP_BACK_TAB) */
     "\033[?1049h\033[22;0;0t", /* smcup (TB_CAP_ENTER_CA) */
     "\033[?1049l\033[23;0;0t", /* rmcup (TB_CAP_EXIT_CA) */
-    "\033[?12l\033[?25h",      /* cnorm (TB_CAP_SHOW_CURSOR) */
-    "\033[?25l",               /* civis (TB_CAP_HIDE_CURSOR) */
-    "\033[H\033[2J",           /* clear (TB_CAP_CLEAR_SCREEN) */
-    "\033(B\033[m",            /* sgr0 (TB_CAP_SGR0) */
-    "\033[4m",                 /* smul (TB_CAP_UNDERLINE) */
-    "\033[1m",                 /* bold (TB_CAP_BOLD) */
-    "\033[5m",                 /* blink (TB_CAP_BLINK) */
-    "\033[3m",                 /* sitm (TB_CAP_ITALIC) */
-    "\033[7m",                 /* rev (TB_CAP_REVERSE) */
-    "\033[?1h\033=",           /* smkx (TB_CAP_ENTER_KEYPAD) */
-    "\033[?1l\033>",           /* rmkx (TB_CAP_EXIT_KEYPAD) */
-    "\033[2m",                 /* dim (TB_CAP_DIM) */
-    "\033[8m",                 /* invis (TB_CAP_INVISIBLE) */
+    "\033[?12l\033[?25h", /* cnorm (TB_CAP_SHOW_CURSOR) */
+    "\033[?25l", /* civis (TB_CAP_HIDE_CURSOR) */
+    "\033[H\033[2J", /* clear (TB_CAP_CLEAR_SCREEN) */
+    "\033(B\033[m", /* sgr0 (TB_CAP_SGR0) */
+    "\033[4m", /* smul (TB_CAP_UNDERLINE) */
+    "\033[1m", /* bold (TB_CAP_BOLD) */
+    "\033[5m", /* blink (TB_CAP_BLINK) */
+    "\033[3m", /* sitm (TB_CAP_ITALIC) */
+    "\033[7m", /* rev (TB_CAP_REVERSE) */
+    "\033[?1h\033=", /* smkx (TB_CAP_ENTER_KEYPAD) */
+    "\033[?1l\033>", /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    "\033[2m", /* dim (TB_CAP_DIM) */
+    "\033[8m", /* invis (TB_CAP_INVISIBLE) */
 };
 
 /* linux */
 static const char *linux_caps[] = {
-    "\033[[A",           /* kf1 (TB_CAP_F1) */
-    "\033[[B",           /* kf2 (TB_CAP_F2) */
-    "\033[[C",           /* kf3 (TB_CAP_F3) */
-    "\033[[D",           /* kf4 (TB_CAP_F4) */
-    "\033[[E",           /* kf5 (TB_CAP_F5) */
-    "\033[17~",          /* kf6 (TB_CAP_F6) */
-    "\033[18~",          /* kf7 (TB_CAP_F7) */
-    "\033[19~",          /* kf8 (TB_CAP_F8) */
-    "\033[20~",          /* kf9 (TB_CAP_F9) */
-    "\033[21~",          /* kf10 (TB_CAP_F10) */
-    "\033[23~",          /* kf11 (TB_CAP_F11) */
-    "\033[24~",          /* kf12 (TB_CAP_F12) */
-    "\033[2~",           /* kich1 (TB_CAP_INSERT) */
-    "\033[3~",           /* kdch1 (TB_CAP_DELETE) */
-    "\033[1~",           /* khome (TB_CAP_HOME) */
-    "\033[4~",           /* kend (TB_CAP_END) */
-    "\033[5~",           /* kpp (TB_CAP_PGUP) */
-    "\033[6~",           /* knp (TB_CAP_PGDN) */
-    "\033[A",            /* kcuu1 (TB_CAP_ARROW_UP) */
-    "\033[B",            /* kcud1 (TB_CAP_ARROW_DOWN) */
-    "\033[D",            /* kcub1 (TB_CAP_ARROW_LEFT) */
-    "\033[C",            /* kcuf1 (TB_CAP_ARROW_RIGHT) */
-    "\033\011",          /* kcbt (TB_CAP_BACK_TAB) */
-    "",                  /* smcup (TB_CAP_ENTER_CA) */
-    "",                  /* rmcup (TB_CAP_EXIT_CA) */
+    "\033[[A", /* kf1 (TB_CAP_F1) */
+    "\033[[B", /* kf2 (TB_CAP_F2) */
+    "\033[[C", /* kf3 (TB_CAP_F3) */
+    "\033[[D", /* kf4 (TB_CAP_F4) */
+    "\033[[E", /* kf5 (TB_CAP_F5) */
+    "\033[17~", /* kf6 (TB_CAP_F6) */
+    "\033[18~", /* kf7 (TB_CAP_F7) */
+    "\033[19~", /* kf8 (TB_CAP_F8) */
+    "\033[20~", /* kf9 (TB_CAP_F9) */
+    "\033[21~", /* kf10 (TB_CAP_F10) */
+    "\033[23~", /* kf11 (TB_CAP_F11) */
+    "\033[24~", /* kf12 (TB_CAP_F12) */
+    "\033[2~", /* kich1 (TB_CAP_INSERT) */
+    "\033[3~", /* kdch1 (TB_CAP_DELETE) */
+    "\033[1~", /* khome (TB_CAP_HOME) */
+    "\033[4~", /* kend (TB_CAP_END) */
+    "\033[5~", /* kpp (TB_CAP_PGUP) */
+    "\033[6~", /* knp (TB_CAP_PGDN) */
+    "\033[A", /* kcuu1 (TB_CAP_ARROW_UP) */
+    "\033[B", /* kcud1 (TB_CAP_ARROW_DOWN) */
+    "\033[D", /* kcub1 (TB_CAP_ARROW_LEFT) */
+    "\033[C", /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    "\033\011", /* kcbt (TB_CAP_BACK_TAB) */
+    "", /* smcup (TB_CAP_ENTER_CA) */
+    "", /* rmcup (TB_CAP_EXIT_CA) */
     "\033[?25h\033[?0c", /* cnorm (TB_CAP_SHOW_CURSOR) */
     "\033[?25l\033[?1c", /* civis (TB_CAP_HIDE_CURSOR) */
-    "\033[H\033[J",      /* clear (TB_CAP_CLEAR_SCREEN) */
-    "\033[m\017",        /* sgr0 (TB_CAP_SGR0) */
-    "\033[4m",           /* smul (TB_CAP_UNDERLINE) */
-    "\033[1m",           /* bold (TB_CAP_BOLD) */
-    "\033[5m",           /* blink (TB_CAP_BLINK) */
-    "",                  /* sitm (TB_CAP_ITALIC) */
-    "\033[7m",           /* rev (TB_CAP_REVERSE) */
-    "",                  /* smkx (TB_CAP_ENTER_KEYPAD) */
-    "",                  /* rmkx (TB_CAP_EXIT_KEYPAD) */
-    "\033[2m",           /* dim (TB_CAP_DIM) */
-    "",                  /* invis (TB_CAP_INVISIBLE) */
+    "\033[H\033[J", /* clear (TB_CAP_CLEAR_SCREEN) */
+    "\033[m\017", /* sgr0 (TB_CAP_SGR0) */
+    "\033[4m", /* smul (TB_CAP_UNDERLINE) */
+    "\033[1m", /* bold (TB_CAP_BOLD) */
+    "\033[5m", /* blink (TB_CAP_BLINK) */
+    "", /* sitm (TB_CAP_ITALIC) */
+    "\033[7m", /* rev (TB_CAP_REVERSE) */
+    "", /* smkx (TB_CAP_ENTER_KEYPAD) */
+    "", /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    "\033[2m", /* dim (TB_CAP_DIM) */
+    "", /* invis (TB_CAP_INVISIBLE) */
 };
 
 /* screen */
 static const char *screen_caps[] = {
-    "\033OP",            /* kf1 (TB_CAP_F1) */
-    "\033OQ",            /* kf2 (TB_CAP_F2) */
-    "\033OR",            /* kf3 (TB_CAP_F3) */
-    "\033OS",            /* kf4 (TB_CAP_F4) */
-    "\033[15~",          /* kf5 (TB_CAP_F5) */
-    "\033[17~",          /* kf6 (TB_CAP_F6) */
-    "\033[18~",          /* kf7 (TB_CAP_F7) */
-    "\033[19~",          /* kf8 (TB_CAP_F8) */
-    "\033[20~",          /* kf9 (TB_CAP_F9) */
-    "\033[21~",          /* kf10 (TB_CAP_F10) */
-    "\033[23~",          /* kf11 (TB_CAP_F11) */
-    "\033[24~",          /* kf12 (TB_CAP_F12) */
-    "\033[2~",           /* kich1 (TB_CAP_INSERT) */
-    "\033[3~",           /* kdch1 (TB_CAP_DELETE) */
-    "\033[1~",           /* khome (TB_CAP_HOME) */
-    "\033[4~",           /* kend (TB_CAP_END) */
-    "\033[5~",           /* kpp (TB_CAP_PGUP) */
-    "\033[6~",           /* knp (TB_CAP_PGDN) */
-    "\033OA",            /* kcuu1 (TB_CAP_ARROW_UP) */
-    "\033OB",            /* kcud1 (TB_CAP_ARROW_DOWN) */
-    "\033OD",            /* kcub1 (TB_CAP_ARROW_LEFT) */
-    "\033OC",            /* kcuf1 (TB_CAP_ARROW_RIGHT) */
-    "\033[Z",            /* kcbt (TB_CAP_BACK_TAB) */
-    "\033[?1049h",       /* smcup (TB_CAP_ENTER_CA) */
-    "\033[?1049l",       /* rmcup (TB_CAP_EXIT_CA) */
+    "\033OP", /* kf1 (TB_CAP_F1) */
+    "\033OQ", /* kf2 (TB_CAP_F2) */
+    "\033OR", /* kf3 (TB_CAP_F3) */
+    "\033OS", /* kf4 (TB_CAP_F4) */
+    "\033[15~", /* kf5 (TB_CAP_F5) */
+    "\033[17~", /* kf6 (TB_CAP_F6) */
+    "\033[18~", /* kf7 (TB_CAP_F7) */
+    "\033[19~", /* kf8 (TB_CAP_F8) */
+    "\033[20~", /* kf9 (TB_CAP_F9) */
+    "\033[21~", /* kf10 (TB_CAP_F10) */
+    "\033[23~", /* kf11 (TB_CAP_F11) */
+    "\033[24~", /* kf12 (TB_CAP_F12) */
+    "\033[2~", /* kich1 (TB_CAP_INSERT) */
+    "\033[3~", /* kdch1 (TB_CAP_DELETE) */
+    "\033[1~", /* khome (TB_CAP_HOME) */
+    "\033[4~", /* kend (TB_CAP_END) */
+    "\033[5~", /* kpp (TB_CAP_PGUP) */
+    "\033[6~", /* knp (TB_CAP_PGDN) */
+    "\033OA", /* kcuu1 (TB_CAP_ARROW_UP) */
+    "\033OB", /* kcud1 (TB_CAP_ARROW_DOWN) */
+    "\033OD", /* kcub1 (TB_CAP_ARROW_LEFT) */
+    "\033OC", /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    "\033[Z", /* kcbt (TB_CAP_BACK_TAB) */
+    "\033[?1049h", /* smcup (TB_CAP_ENTER_CA) */
+    "\033[?1049l", /* rmcup (TB_CAP_EXIT_CA) */
     "\033[34h\033[?25h", /* cnorm (TB_CAP_SHOW_CURSOR) */
-    "\033[?25l",         /* civis (TB_CAP_HIDE_CURSOR) */
-    "\033[H\033[J",      /* clear (TB_CAP_CLEAR_SCREEN) */
-    "\033[m\017",        /* sgr0 (TB_CAP_SGR0) */
-    "\033[4m",           /* smul (TB_CAP_UNDERLINE) */
-    "\033[1m",           /* bold (TB_CAP_BOLD) */
-    "\033[5m",           /* blink (TB_CAP_BLINK) */
-    "",                  /* sitm (TB_CAP_ITALIC) */
-    "\033[7m",           /* rev (TB_CAP_REVERSE) */
-    "\033[?1h\033=",     /* smkx (TB_CAP_ENTER_KEYPAD) */
-    "\033[?1l\033>",     /* rmkx (TB_CAP_EXIT_KEYPAD) */
-    "\033[2m",           /* dim (TB_CAP_DIM) */
-    "",                  /* invis (TB_CAP_INVISIBLE) */
+    "\033[?25l", /* civis (TB_CAP_HIDE_CURSOR) */
+    "\033[H\033[J", /* clear (TB_CAP_CLEAR_SCREEN) */
+    "\033[m\017", /* sgr0 (TB_CAP_SGR0) */
+    "\033[4m", /* smul (TB_CAP_UNDERLINE) */
+    "\033[1m", /* bold (TB_CAP_BOLD) */
+    "\033[5m", /* blink (TB_CAP_BLINK) */
+    "", /* sitm (TB_CAP_ITALIC) */
+    "\033[7m", /* rev (TB_CAP_REVERSE) */
+    "\033[?1h\033=", /* smkx (TB_CAP_ENTER_KEYPAD) */
+    "\033[?1l\033>", /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    "\033[2m", /* dim (TB_CAP_DIM) */
+    "", /* invis (TB_CAP_INVISIBLE) */
 };
 
 /* rxvt-256color */
 static const char *rxvt_256color_caps[] = {
-    "\033[11~",              /* kf1 (TB_CAP_F1) */
-    "\033[12~",              /* kf2 (TB_CAP_F2) */
-    "\033[13~",              /* kf3 (TB_CAP_F3) */
-    "\033[14~",              /* kf4 (TB_CAP_F4) */
-    "\033[15~",              /* kf5 (TB_CAP_F5) */
-    "\033[17~",              /* kf6 (TB_CAP_F6) */
-    "\033[18~",              /* kf7 (TB_CAP_F7) */
-    "\033[19~",              /* kf8 (TB_CAP_F8) */
-    "\033[20~",              /* kf9 (TB_CAP_F9) */
-    "\033[21~",              /* kf10 (TB_CAP_F10) */
-    "\033[23~",              /* kf11 (TB_CAP_F11) */
-    "\033[24~",              /* kf12 (TB_CAP_F12) */
-    "\033[2~",               /* kich1 (TB_CAP_INSERT) */
-    "\033[3~",               /* kdch1 (TB_CAP_DELETE) */
-    "\033[7~",               /* khome (TB_CAP_HOME) */
-    "\033[8~",               /* kend (TB_CAP_END) */
-    "\033[5~",               /* kpp (TB_CAP_PGUP) */
-    "\033[6~",               /* knp (TB_CAP_PGDN) */
-    "\033[A",                /* kcuu1 (TB_CAP_ARROW_UP) */
-    "\033[B",                /* kcud1 (TB_CAP_ARROW_DOWN) */
-    "\033[D",                /* kcub1 (TB_CAP_ARROW_LEFT) */
-    "\033[C",                /* kcuf1 (TB_CAP_ARROW_RIGHT) */
-    "\033[Z",                /* kcbt (TB_CAP_BACK_TAB) */
-    "\0337\033[?47h",        /* smcup (TB_CAP_ENTER_CA) */
+    "\033[11~", /* kf1 (TB_CAP_F1) */
+    "\033[12~", /* kf2 (TB_CAP_F2) */
+    "\033[13~", /* kf3 (TB_CAP_F3) */
+    "\033[14~", /* kf4 (TB_CAP_F4) */
+    "\033[15~", /* kf5 (TB_CAP_F5) */
+    "\033[17~", /* kf6 (TB_CAP_F6) */
+    "\033[18~", /* kf7 (TB_CAP_F7) */
+    "\033[19~", /* kf8 (TB_CAP_F8) */
+    "\033[20~", /* kf9 (TB_CAP_F9) */
+    "\033[21~", /* kf10 (TB_CAP_F10) */
+    "\033[23~", /* kf11 (TB_CAP_F11) */
+    "\033[24~", /* kf12 (TB_CAP_F12) */
+    "\033[2~", /* kich1 (TB_CAP_INSERT) */
+    "\033[3~", /* kdch1 (TB_CAP_DELETE) */
+    "\033[7~", /* khome (TB_CAP_HOME) */
+    "\033[8~", /* kend (TB_CAP_END) */
+    "\033[5~", /* kpp (TB_CAP_PGUP) */
+    "\033[6~", /* knp (TB_CAP_PGDN) */
+    "\033[A", /* kcuu1 (TB_CAP_ARROW_UP) */
+    "\033[B", /* kcud1 (TB_CAP_ARROW_DOWN) */
+    "\033[D", /* kcub1 (TB_CAP_ARROW_LEFT) */
+    "\033[C", /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    "\033[Z", /* kcbt (TB_CAP_BACK_TAB) */
+    "\0337\033[?47h", /* smcup (TB_CAP_ENTER_CA) */
     "\033[2J\033[?47l\0338", /* rmcup (TB_CAP_EXIT_CA) */
-    "\033[?25h",             /* cnorm (TB_CAP_SHOW_CURSOR) */
-    "\033[?25l",             /* civis (TB_CAP_HIDE_CURSOR) */
-    "\033[H\033[2J",         /* clear (TB_CAP_CLEAR_SCREEN) */
-    "\033[m\017",            /* sgr0 (TB_CAP_SGR0) */
-    "\033[4m",               /* smul (TB_CAP_UNDERLINE) */
-    "\033[1m",               /* bold (TB_CAP_BOLD) */
-    "\033[5m",               /* blink (TB_CAP_BLINK) */
-    "",                      /* sitm (TB_CAP_ITALIC) */
-    "\033[7m",               /* rev (TB_CAP_REVERSE) */
-    "\033=",                 /* smkx (TB_CAP_ENTER_KEYPAD) */
-    "\033>",                 /* rmkx (TB_CAP_EXIT_KEYPAD) */
-    "",                      /* dim (TB_CAP_DIM) */
-    "",                      /* invis (TB_CAP_INVISIBLE) */
+    "\033[?25h", /* cnorm (TB_CAP_SHOW_CURSOR) */
+    "\033[?25l", /* civis (TB_CAP_HIDE_CURSOR) */
+    "\033[H\033[2J", /* clear (TB_CAP_CLEAR_SCREEN) */
+    "\033[m\017", /* sgr0 (TB_CAP_SGR0) */
+    "\033[4m", /* smul (TB_CAP_UNDERLINE) */
+    "\033[1m", /* bold (TB_CAP_BOLD) */
+    "\033[5m", /* blink (TB_CAP_BLINK) */
+    "", /* sitm (TB_CAP_ITALIC) */
+    "\033[7m", /* rev (TB_CAP_REVERSE) */
+    "\033=", /* smkx (TB_CAP_ENTER_KEYPAD) */
+    "\033>", /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    "", /* dim (TB_CAP_DIM) */
+    "", /* invis (TB_CAP_INVISIBLE) */
 };
 
 /* rxvt-unicode */
 static const char *rxvt_unicode_caps[] = {
-    "\033[11~",           /* kf1 (TB_CAP_F1) */
-    "\033[12~",           /* kf2 (TB_CAP_F2) */
-    "\033[13~",           /* kf3 (TB_CAP_F3) */
-    "\033[14~",           /* kf4 (TB_CAP_F4) */
-    "\033[15~",           /* kf5 (TB_CAP_F5) */
-    "\033[17~",           /* kf6 (TB_CAP_F6) */
-    "\033[18~",           /* kf7 (TB_CAP_F7) */
-    "\033[19~",           /* kf8 (TB_CAP_F8) */
-    "\033[20~",           /* kf9 (TB_CAP_F9) */
-    "\033[21~",           /* kf10 (TB_CAP_F10) */
-    "\033[23~",           /* kf11 (TB_CAP_F11) */
-    "\033[24~",           /* kf12 (TB_CAP_F12) */
-    "\033[2~",            /* kich1 (TB_CAP_INSERT) */
-    "\033[3~",            /* kdch1 (TB_CAP_DELETE) */
-    "\033[7~",            /* khome (TB_CAP_HOME) */
-    "\033[8~",            /* kend (TB_CAP_END) */
-    "\033[5~",            /* kpp (TB_CAP_PGUP) */
-    "\033[6~",            /* knp (TB_CAP_PGDN) */
-    "\033[A",             /* kcuu1 (TB_CAP_ARROW_UP) */
-    "\033[B",             /* kcud1 (TB_CAP_ARROW_DOWN) */
-    "\033[D",             /* kcub1 (TB_CAP_ARROW_LEFT) */
-    "\033[C",             /* kcuf1 (TB_CAP_ARROW_RIGHT) */
-    "\033[Z",             /* kcbt (TB_CAP_BACK_TAB) */
-    "\033[?1049h",        /* smcup (TB_CAP_ENTER_CA) */
-    "\033[r\033[?1049l",  /* rmcup (TB_CAP_EXIT_CA) */
+    "\033[11~", /* kf1 (TB_CAP_F1) */
+    "\033[12~", /* kf2 (TB_CAP_F2) */
+    "\033[13~", /* kf3 (TB_CAP_F3) */
+    "\033[14~", /* kf4 (TB_CAP_F4) */
+    "\033[15~", /* kf5 (TB_CAP_F5) */
+    "\033[17~", /* kf6 (TB_CAP_F6) */
+    "\033[18~", /* kf7 (TB_CAP_F7) */
+    "\033[19~", /* kf8 (TB_CAP_F8) */
+    "\033[20~", /* kf9 (TB_CAP_F9) */
+    "\033[21~", /* kf10 (TB_CAP_F10) */
+    "\033[23~", /* kf11 (TB_CAP_F11) */
+    "\033[24~", /* kf12 (TB_CAP_F12) */
+    "\033[2~", /* kich1 (TB_CAP_INSERT) */
+    "\033[3~", /* kdch1 (TB_CAP_DELETE) */
+    "\033[7~", /* khome (TB_CAP_HOME) */
+    "\033[8~", /* kend (TB_CAP_END) */
+    "\033[5~", /* kpp (TB_CAP_PGUP) */
+    "\033[6~", /* knp (TB_CAP_PGDN) */
+    "\033[A", /* kcuu1 (TB_CAP_ARROW_UP) */
+    "\033[B", /* kcud1 (TB_CAP_ARROW_DOWN) */
+    "\033[D", /* kcub1 (TB_CAP_ARROW_LEFT) */
+    "\033[C", /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    "\033[Z", /* kcbt (TB_CAP_BACK_TAB) */
+    "\033[?1049h", /* smcup (TB_CAP_ENTER_CA) */
+    "\033[r\033[?1049l", /* rmcup (TB_CAP_EXIT_CA) */
     "\033[?12l\033[?25h", /* cnorm (TB_CAP_SHOW_CURSOR) */
-    "\033[?25l",          /* civis (TB_CAP_HIDE_CURSOR) */
-    "\033[H\033[2J",      /* clear (TB_CAP_CLEAR_SCREEN) */
-    "\033[m\033(B",       /* sgr0 (TB_CAP_SGR0) */
-    "\033[4m",            /* smul (TB_CAP_UNDERLINE) */
-    "\033[1m",            /* bold (TB_CAP_BOLD) */
-    "\033[5m",            /* blink (TB_CAP_BLINK) */
-    "\033[3m",            /* sitm (TB_CAP_ITALIC) */
-    "\033[7m",            /* rev (TB_CAP_REVERSE) */
-    "\033=",              /* smkx (TB_CAP_ENTER_KEYPAD) */
-    "\033>",              /* rmkx (TB_CAP_EXIT_KEYPAD) */
-    "",                   /* dim (TB_CAP_DIM) */
-    "",                   /* invis (TB_CAP_INVISIBLE) */
+    "\033[?25l", /* civis (TB_CAP_HIDE_CURSOR) */
+    "\033[H\033[2J", /* clear (TB_CAP_CLEAR_SCREEN) */
+    "\033[m\033(B", /* sgr0 (TB_CAP_SGR0) */
+    "\033[4m", /* smul (TB_CAP_UNDERLINE) */
+    "\033[1m", /* bold (TB_CAP_BOLD) */
+    "\033[5m", /* blink (TB_CAP_BLINK) */
+    "\033[3m", /* sitm (TB_CAP_ITALIC) */
+    "\033[7m", /* rev (TB_CAP_REVERSE) */
+    "\033=", /* smkx (TB_CAP_ENTER_KEYPAD) */
+    "\033>", /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    "", /* dim (TB_CAP_DIM) */
+    "", /* invis (TB_CAP_INVISIBLE) */
 };
 
 /* Eterm */
 static const char *eterm_caps[] = {
-    "\033[11~",              /* kf1 (TB_CAP_F1) */
-    "\033[12~",              /* kf2 (TB_CAP_F2) */
-    "\033[13~",              /* kf3 (TB_CAP_F3) */
-    "\033[14~",              /* kf4 (TB_CAP_F4) */
-    "\033[15~",              /* kf5 (TB_CAP_F5) */
-    "\033[17~",              /* kf6 (TB_CAP_F6) */
-    "\033[18~",              /* kf7 (TB_CAP_F7) */
-    "\033[19~",              /* kf8 (TB_CAP_F8) */
-    "\033[20~",              /* kf9 (TB_CAP_F9) */
-    "\033[21~",              /* kf10 (TB_CAP_F10) */
-    "\033[23~",              /* kf11 (TB_CAP_F11) */
-    "\033[24~",              /* kf12 (TB_CAP_F12) */
-    "\033[2~",               /* kich1 (TB_CAP_INSERT) */
-    "\033[3~",               /* kdch1 (TB_CAP_DELETE) */
-    "\033[7~",               /* khome (TB_CAP_HOME) */
-    "\033[8~",               /* kend (TB_CAP_END) */
-    "\033[5~",               /* kpp (TB_CAP_PGUP) */
-    "\033[6~",               /* knp (TB_CAP_PGDN) */
-    "\033[A",                /* kcuu1 (TB_CAP_ARROW_UP) */
-    "\033[B",                /* kcud1 (TB_CAP_ARROW_DOWN) */
-    "\033[D",                /* kcub1 (TB_CAP_ARROW_LEFT) */
-    "\033[C",                /* kcuf1 (TB_CAP_ARROW_RIGHT) */
-    "",                      /* kcbt (TB_CAP_BACK_TAB) */
-    "\0337\033[?47h",        /* smcup (TB_CAP_ENTER_CA) */
+    "\033[11~", /* kf1 (TB_CAP_F1) */
+    "\033[12~", /* kf2 (TB_CAP_F2) */
+    "\033[13~", /* kf3 (TB_CAP_F3) */
+    "\033[14~", /* kf4 (TB_CAP_F4) */
+    "\033[15~", /* kf5 (TB_CAP_F5) */
+    "\033[17~", /* kf6 (TB_CAP_F6) */
+    "\033[18~", /* kf7 (TB_CAP_F7) */
+    "\033[19~", /* kf8 (TB_CAP_F8) */
+    "\033[20~", /* kf9 (TB_CAP_F9) */
+    "\033[21~", /* kf10 (TB_CAP_F10) */
+    "\033[23~", /* kf11 (TB_CAP_F11) */
+    "\033[24~", /* kf12 (TB_CAP_F12) */
+    "\033[2~", /* kich1 (TB_CAP_INSERT) */
+    "\033[3~", /* kdch1 (TB_CAP_DELETE) */
+    "\033[7~", /* khome (TB_CAP_HOME) */
+    "\033[8~", /* kend (TB_CAP_END) */
+    "\033[5~", /* kpp (TB_CAP_PGUP) */
+    "\033[6~", /* knp (TB_CAP_PGDN) */
+    "\033[A", /* kcuu1 (TB_CAP_ARROW_UP) */
+    "\033[B", /* kcud1 (TB_CAP_ARROW_DOWN) */
+    "\033[D", /* kcub1 (TB_CAP_ARROW_LEFT) */
+    "\033[C", /* kcuf1 (TB_CAP_ARROW_RIGHT) */
+    "", /* kcbt (TB_CAP_BACK_TAB) */
+    "\0337\033[?47h", /* smcup (TB_CAP_ENTER_CA) */
     "\033[2J\033[?47l\0338", /* rmcup (TB_CAP_EXIT_CA) */
-    "\033[?25h",             /* cnorm (TB_CAP_SHOW_CURSOR) */
-    "\033[?25l",             /* civis (TB_CAP_HIDE_CURSOR) */
-    "\033[H\033[2J",         /* clear (TB_CAP_CLEAR_SCREEN) */
-    "\033[m\017",            /* sgr0 (TB_CAP_SGR0) */
-    "\033[4m",               /* smul (TB_CAP_UNDERLINE) */
-    "\033[1m",               /* bold (TB_CAP_BOLD) */
-    "\033[5m",               /* blink (TB_CAP_BLINK) */
-    "",                      /* sitm (TB_CAP_ITALIC) */
-    "\033[7m",               /* rev (TB_CAP_REVERSE) */
-    "",                      /* smkx (TB_CAP_ENTER_KEYPAD) */
-    "",                      /* rmkx (TB_CAP_EXIT_KEYPAD) */
-    "",                      /* dim (TB_CAP_DIM) */
-    "",                      /* invis (TB_CAP_INVISIBLE) */
+    "\033[?25h", /* cnorm (TB_CAP_SHOW_CURSOR) */
+    "\033[?25l", /* civis (TB_CAP_HIDE_CURSOR) */
+    "\033[H\033[2J", /* clear (TB_CAP_CLEAR_SCREEN) */
+    "\033[m\017", /* sgr0 (TB_CAP_SGR0) */
+    "\033[4m", /* smul (TB_CAP_UNDERLINE) */
+    "\033[1m", /* bold (TB_CAP_BOLD) */
+    "\033[5m", /* blink (TB_CAP_BLINK) */
+    "", /* sitm (TB_CAP_ITALIC) */
+    "\033[7m", /* rev (TB_CAP_REVERSE) */
+    "", /* smkx (TB_CAP_ENTER_KEYPAD) */
+    "", /* rmkx (TB_CAP_EXIT_KEYPAD) */
+    "", /* dim (TB_CAP_DIM) */
+    "", /* invis (TB_CAP_INVISIBLE) */
 };
 
 static struct {
@@ -1119,13 +1119,13 @@ static struct {
     const char **caps;
     const char *alias;
 } builtin_terms[] = {
-    {"xterm",         xterm_caps,         ""    },
-    {"linux",         linux_caps,         ""    },
-    {"screen",        screen_caps,        "tmux"},
-    {"rxvt-256color", rxvt_256color_caps, ""    },
-    {"rxvt-unicode",  rxvt_unicode_caps,  "rxvt"},
-    {"Eterm",         eterm_caps,         ""    },
-    {NULL,            NULL,               NULL  },
+    { "xterm", xterm_caps, "" },
+    { "linux", linux_caps, "" },
+    { "screen", screen_caps, "tmux" },
+    { "rxvt-256color", rxvt_256color_caps, "" },
+    { "rxvt-unicode", rxvt_unicode_caps, "rxvt" },
+    { "Eterm", eterm_caps, "" },
+    { NULL, NULL, NULL },
 };
 
 /* END codegen c */
